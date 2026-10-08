@@ -1,0 +1,288 @@
+% Chinese statements and concise solutions; compile using XeLaTeX.
+\documentclass[UTF8,10pt,letterpaper,fontset=fandol]{ctexart}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{needspace}
+\usepackage[unicode,hidelinks]{hyperref}
+\pagestyle{plain}
+\raggedbottom
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.2em}
+\setlength{\emergencystretch}{2em}
+\setlist[enumerate]{label=(\arabic*),leftmargin=2em,itemsep=0.4em,topsep=0.3em}
+\setcounter{secnumdepth}{0}
+\ctexset{section={format=\Large\bfseries,beforeskip=1.2ex,afterskip=0.8ex}}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Span}{\operatorname{span}}
+\newcommand{\Solution}{\par\Needspace{5\baselineskip}\textbf{解答}\par}
+
+\begin{document}
+\begin{center}
+{\LARGE 作业 1}\par
+\vspace{0.6em}
+2026 年 9 月 30 日
+\end{center}
+\begin{center}
+\emph{部分题目选自教材中的例题。}
+\end{center}
+
+\section{第 1 题}
+设 \(\mathcal C_{n-1}(t)\) 表示定义在 \([0,n-1]\) 上，且在各区间
+\([i-1,i]\) 内斜率为常数的所有连续多项式函数构成的集合，其中
+\(i=1,2,\ldots,n-1\)，\(n\) 为整数。
+对于向量 \(\alpha(t)\in\mathcal C_{n-1}(t)\)，将其对应到一个
+\(n\) 维列向量 \(\alpha=[\alpha(0)\ \alpha(1)\ \ldots\ \alpha(n-1)]^T\)。
+
+\begin{enumerate}
+\item 证明向量 \(\alpha_i(t)\in\mathcal C_{n-1}(t)\)，\(i=1,2,\ldots,n\)，
+线性无关，当且仅当对应的列向量 \(\alpha_i\in\R^n\)，\(i=1,2,\ldots,n\)，线性无关。
+\item 证明具有以下节点值的向量 \(\alpha_i(t)\in\mathcal C_3(t)\)，
+\(i=1,2,3,4\)，线性无关，从而构成 \(\mathcal C_3(t)\) 的一组基：
+\[
+\alpha_1=\begin{bmatrix}1\\0\\0\\0\end{bmatrix},\quad
+\alpha_2=\begin{bmatrix}-1\\1\\0\\0\end{bmatrix},\quad
+\alpha_3=\begin{bmatrix}0\\-1\\1\\0\end{bmatrix},\quad
+\alpha_4=\begin{bmatrix}0\\0\\-1\\1\end{bmatrix}
+\]
+具有以下节点值的向量 \(\beta_i(t)\in\mathcal C_3(t)\)，\(i=1,2,3,4\)，也构成一组基：
+\[
+\beta_1=\begin{bmatrix}1\\0\\0\\0\end{bmatrix},\quad
+\beta_2=\begin{bmatrix}1\\1\\0\\0\end{bmatrix},\quad
+\beta_3=\begin{bmatrix}1\\1\\1\\0\end{bmatrix},\quad
+\beta_4=\begin{bmatrix}1\\1\\1\\1\end{bmatrix}.
+\]
+\item 求将基 \([\alpha_1(t)\ \alpha_2(t)\ \alpha_3(t)\ \alpha_4(t)]\)
+变为基 \([\beta_1(t)\ \beta_2(t)\ \beta_3(t)\ \beta_4(t)]\) 的过渡矩阵 \(T\)。
+\item 若 \(\xi(t)\) 的节点值向量为
+\[
+\xi=[\xi(0)\ \xi(1)\ \xi(2)\ \xi(3)]^T
+\]
+求其关于基 \([\beta_1(t)\ \beta_2(t)\ \beta_3(t)\ \beta_4(t)]\) 的表示。
+\end{enumerate}
+
+\Solution
+\begin{enumerate}
+\item 节点值映射 \(E(f)=[f(0),\ldots,f(n-1)]^T\) 是线性的。
+任意节点值 \(v_0,\ldots,v_{n-1}\) 唯一确定各段上的函数：
+\[
+f(t)=(i-t)v_{i-1}+(t-i+1)v_i,\qquad t\in[i-1,i].
+\]
+故 \(E\) 是线性同构，\(\dim\mathcal C_{n-1}(t)=n\)，且
+\[
+\sum_{i=1}^n c_i\alpha_i(t)=0
+\quad\Longleftrightarrow\quad
+\sum_{i=1}^n c_i\alpha_i=0.
+\]
+因此两组向量的线性无关性等价。
+\item 记节点值矩阵 \(A_\alpha=[\alpha_1\ \alpha_2\ \alpha_3\ \alpha_4]\)、
+\(A_\beta=[\beta_1\ \beta_2\ \beta_3\ \beta_4]\)。
+两者均为对角元为 \(1\) 的上三角矩阵，行列式均为 \(1\)。
+由 (1) 及 \(\dim\mathcal C_3(t)=4\)，两组函数均为基。
+\item 由 \([\beta_1(t)\ \cdots\ \beta_4(t)]
+=[\alpha_1(t)\ \cdots\ \alpha_4(t)]T\)，得
+\[
+\boxed{T=A_\alpha^{-1}A_\beta=
+\begin{bmatrix}
+1&2&3&4\\
+0&1&2&3\\
+0&0&1&2\\
+0&0&0&1
+\end{bmatrix}}.
+\]
+\item 若 \(y\) 为所求坐标，则 \(\xi=A_\beta y\)，所以
+\[
+\boxed{y=A_\beta^{-1}\xi=
+\begin{bmatrix}
+\xi(0)-\xi(1)\\
+\xi(1)-\xi(2)\\
+\xi(2)-\xi(3)\\
+\xi(3)
+\end{bmatrix}}.
+\]
+\end{enumerate}
+
+\section{第 2 题}
+请证明下列向量线性无关并构成 \(\C^{2\times2}\) 的一组基：
+\[
+A_1=\begin{bmatrix}0&1\\1&1\end{bmatrix},\quad
+A_2=\begin{bmatrix}1&1\\0&1\end{bmatrix},\quad
+A_3=\begin{bmatrix}1&0\\1&1\end{bmatrix},\quad
+A_4=\begin{bmatrix}1&1\\1&0\end{bmatrix}
+\]
+并求给定矩阵
+\[
+A=\begin{bmatrix}1&0\\0&1\end{bmatrix}
+\]
+关于这组基的表示。
+
+\Solution
+若 \(\sum_{i=1}^4 c_iA_i=0\)，令 \(s=\sum_{i=1}^4 c_i\)。
+比较四个位置得 \(s-c_i=0\)（\(i=1,2,3,4\)），故所有 \(c_i=s\)。
+由 \(s=4s\) 得 \(s=0\)，从而四个矩阵线性无关。
+又 \(\dim_{\C}\C^{2\times2}=4\)，故它们构成一组基。
+\[
+A=\frac{-A_1+2A_2+2A_3-A_4}{3},\qquad
+\boxed{[A]_{(A_1,A_2,A_3,A_4)}=
+\begin{bmatrix}-\tfrac13&\tfrac23&\tfrac23&-\tfrac13\end{bmatrix}^{T}}.
+\]
+
+\section{第 3 题}
+设 \(\mathcal C_{n-1}(t)\) 表示定义在 \([0,n-1]\) 上，且在各区间
+\([i-1,i]\) 内斜率为常数的所有连续多项式函数构成的集合，其中
+\(i=1,2,\ldots,n-1\)，\(n\) 为整数。
+设 \(\boldsymbol\alpha_1,\boldsymbol\alpha_2,\ldots,\boldsymbol\alpha_s\)
+为 \(\mathcal V\) 中的一组向量。它们的线性包是这些向量所有可能的线性组合构成的集合：
+\[
+\Span\{\boldsymbol\alpha_1,\boldsymbol\alpha_2,\ldots,\boldsymbol\alpha_s\}
+=\{\boldsymbol\alpha:\boldsymbol\alpha=k_1\boldsymbol\alpha_1
++k_2\boldsymbol\alpha_2+\cdots+k_s\boldsymbol\alpha_s,\ k_i\in\mathcal F\}.
+\]
+在本题中，设 \(\alpha_1(t),\alpha_2(t)\in\mathcal C_3(t)\)，其节点值为
+\[
+\alpha_1=\begin{bmatrix}1\\0\\0\\1\end{bmatrix},\quad
+\alpha_2=\begin{bmatrix}1\\1\\0\\0\end{bmatrix},\qquad
+\mathcal U=\Span\{\alpha_1(t),\alpha_2(t)\},
+\]
+设 \(\beta_1(t),\beta_2(t)\in\mathcal C_3(t)\)，其节点值为
+\[
+\beta_1=\begin{bmatrix}0\\1\\1\\0\end{bmatrix},\quad
+\beta_2=\begin{bmatrix}0\\0\\1\\1\end{bmatrix},\qquad
+\mathcal V=\Span\{\beta_1(t),\beta_2(t)\}.
+\]
+\begin{enumerate}
+\item \(\mathcal U\) 与 \(\mathcal V\) 的和定义为
+\[
+\mathcal U+\mathcal V
+=\{\alpha=\alpha_1+\alpha_2:\alpha_1\in\mathcal U
+\text{ 且 }\alpha_2\in\mathcal V\}.
+\]
+求 \(\mathcal U+\mathcal V\) 的一组基及其维数；
+\item \(\mathcal U\) 与 \(\mathcal V\) 的交定义为
+\[
+\mathcal U\cap\mathcal V
+=\{\alpha:\alpha\in\mathcal U\text{ 且 }\alpha\in\mathcal V\}.
+\]
+求 \(\mathcal U\cap\mathcal V\) 的一组基及其维数。
+\end{enumerate}
+
+\Solution
+由第 1 题，以下计算可在节点值向量上进行。
+\begin{enumerate}
+\item 有 \(\beta_2=\alpha_1-\alpha_2+\beta_1\)。又
+\[
+a\alpha_1+b\alpha_2+c\beta_1
+=(a+b,b+c,c,a)^T=0\quad\Longrightarrow\quad a=b=c=0.
+\]
+故所求基及维数为
+\[
+\boxed{\{\alpha_1(t),\alpha_2(t),\beta_1(t)\}},\qquad
+\boxed{\dim(\mathcal U+\mathcal V)=3}.
+\]
+\item 由 \(a\alpha_1+b\alpha_2=c\beta_1+d\beta_2\)，比较分量得
+\(a=d,\ b=c=-a\)。所以公共向量为 \(a(\alpha_1-\alpha_2)\)，所求基及维数为
+\[
+\boxed{\{\alpha_1(t)-\alpha_2(t)\}},\qquad
+\boxed{\dim(\mathcal U\cap\mathcal V)=1}.
+\]
+\end{enumerate}
+
+\section{教材例题}
+\emph{作答第 4 题之前，请阅读以下例题。}
+
+\textbf{例 1.23}（第 21 页）。定义 \(\mathcal D:\R_{n+1}[\lambda]\to\R_n[\lambda]\) 为
+\[
+\mathcal D(f(\lambda))=\frac{d}{d\lambda}f(\lambda)
+\qquad\forall f(\lambda)\in\R_{n+1}[\lambda].
+\]
+由求导的线性性，容易验证 \(\mathcal D\) 是线性变换。
+
+\textbf{例 1.24}（第 22 页）。定义 \(\mathcal S:\R_n[\lambda]\to\R_{n+1}[\lambda]\) 为
+\[
+\mathcal S(f(\lambda))=\int_0^\lambda f(\xi)\,d\xi
+\qquad\forall f(\lambda)\in\R_n[\lambda].
+\]
+由积分的线性性，容易验证 \(\mathcal S\) 是线性变换。
+
+\begin{samepage}
+\textbf{例 1.26}（第 25 页）。设线性变换
+\(\mathcal D\in\mathcal L(\R_n[\lambda]\to\R_{n-1}[\lambda])\) 满足
+\[
+\mathcal D(f(\lambda))=\frac{d}{d\lambda}f(\lambda)
+\]
+求其关于基 \([1\ \lambda\ \cdots\ \lambda^n]\) 和
+\([1\ \lambda\ \cdots\ \lambda^{n-1}]\) 的矩阵表示。
+\end{samepage}
+
+\textbf{例 1.27}（第 26 页）。定义线性变换
+\(\mathcal S\in\mathcal L(\R_n[\lambda]\to\R_{n+1}[\lambda])\) 为
+\[
+\mathcal S(f(\lambda))=\int_0^\lambda f(\xi)\,d\xi
+\qquad\forall f(\lambda)\in\R_n[\lambda].
+\]
+求其关于基 \([1\ \lambda\ \cdots\ \lambda^n]\) 和
+\([1\ \lambda\ \cdots\ \lambda^{n+1}]\) 的矩阵表示。
+
+\section{第 4 题}
+记 \(\R_{n-1}(\lambda)\) 为所有实系数、次数不超过 \(n-1\) 的多项式构成的集合。
+加法与数乘运算如下：
+\[
+f_1(\lambda)=\sum_{i=0}^{n-1}f_i^{(1)}\lambda^i,\qquad
+f_2(\lambda)=\sum_{i=0}^{n-1}f_i^{(2)}\lambda^i
+\]
+\[
+(f_1+f_2)(\lambda)=\sum_{i=0}^{n-1}
+\bigl(f_i^{(1)}+f_i^{(2)}\bigr)\lambda^i
+\]
+\[
+(kf_1)(\lambda)=k\sum_{i=0}^{n-1}f_i^{(1)}\lambda^i
+\]
+\begin{enumerate}
+\item 定义变换 \(\mathcal L_\alpha:\R_{n-1}(\lambda)\to\R_{n-1}(\lambda)\) 为
+\[
+\mathcal L_\alpha[f(\lambda+\alpha)]=f(\lambda),\qquad
+f(\lambda+\alpha),\ f(\lambda)\in\R_{n-1}(\lambda),
+\]
+其中 \(\alpha\) 为实常数。证明 \(\mathcal L_\alpha\) 是线性变换；
+\item 求线性变换 \(\mathcal L_\alpha\) 关于基
+\(1,\lambda+\alpha,(\lambda+\alpha)^2,\ldots,(\lambda+\alpha)^{n-1}\)
+的矩阵表示 \(L\)，即满足下式的矩阵 \(L\)：
+\[
+\begin{aligned}
+&\mathcal L_\alpha\bigl([1,\lambda+\alpha,(\lambda+\alpha)^2,\ldots,
+(\lambda+\alpha)^{n-1}]\bigr)\\
+&\qquad\mathrel{\triangleq}
+[1,\lambda+\alpha,(\lambda+\alpha)^2,\ldots,(\lambda+\alpha)^{n-1}]L.
+\end{aligned}
+\]
+\end{enumerate}
+
+\Solution
+\begin{enumerate}
+\item 令 \(g(\lambda)=f(\lambda+\alpha)\)，则
+\((\mathcal L_\alpha g)(\lambda)=g(\lambda-\alpha)\)，且平移不增加次数。
+对任意 \(a,b\in\R\)，
+\[
+\begin{aligned}
+\bigl(\mathcal L_\alpha(ag_1+bg_2)\bigr)(\lambda)
+&=ag_1(\lambda-\alpha)+bg_2(\lambda-\alpha)\\
+&=a(\mathcal L_\alpha g_1)(\lambda)+b(\mathcal L_\alpha g_2)(\lambda).
+\end{aligned}
+\]
+故 \(\mathcal L_\alpha\) 为线性映射。
+\item 令 \(b_j(\lambda)=(\lambda+\alpha)^j\)，\(0\le j\le n-1\)，则
+\[
+\mathcal L_\alpha b_j=\lambda^j
+=\sum_{i=0}^j\binom ji(-\alpha)^{j-i}b_i.
+\]
+按列排列这些坐标，得到
+\[
+\boxed{L_{i+1,j+1}=\begin{cases}
+\displaystyle\binom ji(-\alpha)^{j-i},&0\le i\le j\le n-1,\\
+0,&0\le j<i\le n-1.
+\end{cases}}
+\]
+\end{enumerate}
+\end{document}
+

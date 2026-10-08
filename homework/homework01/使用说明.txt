@@ -1,0 +1,15 @@
+Homework 1 工作空间
+
+中文版（中文题目与中文解答）：
+  Homework1_题目与解答.tex
+  Homework1_题目与解答.pdf
+
+英文版（原英文题目与英文解答）：
+  Homework1_英文题目与解答.tex
+  Homework1_英文题目与解答.pdf
+
+原始作业：Homework1_原始题目.pdf，供核对。
+两版均保留四道题与四个教材例题，解答只保留必要步骤。
+
+重新编译：在此文件夹的 PowerShell 中运行 .\build.ps1。
+脚本使用本机 XeLaTeX，一次编译两份源码；用 PDF 阅读器查看结果。

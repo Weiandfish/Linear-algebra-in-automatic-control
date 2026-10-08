@@ -1,0 +1,304 @@
+% Original English statements and concise English solutions; compile using XeLaTeX.
+\documentclass[UTF8,10pt,letterpaper,fontset=fandol]{ctexart}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{needspace}
+\usepackage[unicode,hidelinks]{hyperref}
+\pagestyle{plain}
+\raggedbottom
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.2em}
+\setlength{\emergencystretch}{2em}
+\setlist[enumerate]{label=(\arabic*),leftmargin=2em,itemsep=0.4em,topsep=0.3em}
+\setcounter{secnumdepth}{0}
+\ctexset{section={format=\Large\bfseries,beforeskip=1.2ex,afterskip=0.8ex}}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Span}{\operatorname{span}}
+\newcommand{\Solution}{\par\Needspace{5\baselineskip}\textbf{Solution}\par}
+
+\begin{document}
+\begin{center}
+{\LARGE Homework 1}\par
+\vspace{0.6em}
+September 30, 2026
+\end{center}
+\begin{center}
+\emph{Some of the problems are collected from the examples in the book.}
+\end{center}
+
+\section{Problem 1}
+Let \(\mathcal C_{n-1}(t)\) denote the set of all continuous polynomial functions
+defined on \([0,n-1]\) with constant slope in \([i-1,i]\),
+\(i=1,2,\ldots,n-1\), \(n\) is an integer. With a vector
+\(\alpha(t)\in\mathcal C_{n-1}(t)\), we associate an \(n\)-dimensional
+column vector \(\alpha=[\alpha(0)\ \alpha(1)\ \ldots\ \alpha(n-1)]^T\).
+
+\begin{enumerate}
+\item Show that the vectors \(\alpha_i(t)\in\mathcal C_{n-1}(t)\),
+\(i=1,2,\ldots,n\), are linearly independent if and only if so are the
+associated column vectors \(\alpha_i\in\R^n\), \(i=1,2,\ldots,n\).
+\item Show that \(\alpha_i(t)\in\mathcal C_3(t)\), \(i=1,2,3,4\) with
+\[
+\alpha_1=\begin{bmatrix}1\\0\\0\\0\end{bmatrix},\quad
+\alpha_2=\begin{bmatrix}-1\\1\\0\\0\end{bmatrix},\quad
+\alpha_3=\begin{bmatrix}0\\-1\\1\\0\end{bmatrix},\quad
+\alpha_4=\begin{bmatrix}0\\0\\-1\\1\end{bmatrix}
+\]
+are linearly independent thus form a basis for \(\mathcal C_3(t)\) and so do
+the vectors \(\beta_i(t)\in\mathcal C_3(t)\), \(i=1,2,3,4\) with
+\[
+\beta_1=\begin{bmatrix}1\\0\\0\\0\end{bmatrix},\quad
+\beta_2=\begin{bmatrix}1\\1\\0\\0\end{bmatrix},\quad
+\beta_3=\begin{bmatrix}1\\1\\1\\0\end{bmatrix},\quad
+\beta_4=\begin{bmatrix}1\\1\\1\\1\end{bmatrix}.
+\]
+\item Find the transition matrix \(T\) that transforms the basis
+\([\alpha_1(t)\ \alpha_2(t)\ \alpha_3(t)\ \alpha_4(t)]\) to the basis
+\([\beta_1(t)\ \beta_2(t)\ \beta_3(t)\ \beta_4(t)]\).
+\item Find the representation of \(\xi(t)\) with
+\[
+\xi=[\xi(0)\ \xi(1)\ \xi(2)\ \xi(3)]^T
+\]
+with respect to the basis \([\beta_1(t)\ \beta_2(t)\ \beta_3(t)\ \beta_4(t)]\).
+\end{enumerate}
+
+\Solution
+\begin{enumerate}
+\item The nodal map \(E(f)=[f(0),\ldots,f(n-1)]^T\) is linear.
+Any nodal values \(v_0,\ldots,v_{n-1}\) uniquely determine each segment:
+\[
+f(t)=(i-t)v_{i-1}+(t-i+1)v_i,\qquad t\in[i-1,i].
+\]
+Thus \(E\) is a linear isomorphism, \(\dim\mathcal C_{n-1}(t)=n\), and
+\[
+\sum_{i=1}^n c_i\alpha_i(t)=0
+\quad\Longleftrightarrow\quad
+\sum_{i=1}^n c_i\alpha_i=0.
+\]
+This proves the equivalence of linear independence.
+\item Let \(A_\alpha=[\alpha_1\ \alpha_2\ \alpha_3\ \alpha_4]\) and
+\(A_\beta=[\beta_1\ \beta_2\ \beta_3\ \beta_4]\).
+Both are upper triangular with unit diagonal, so both determinants are one.
+By (1) and \(\dim\mathcal C_3(t)=4\), both lists of functions are bases.
+\item From \([\beta_1(t)\ \cdots\ \beta_4(t)]
+=[\alpha_1(t)\ \cdots\ \alpha_4(t)]T\), we obtain
+\[
+\boxed{T=A_\alpha^{-1}A_\beta=
+\begin{bmatrix}
+1&2&3&4\\
+0&1&2&3\\
+0&0&1&2\\
+0&0&0&1
+\end{bmatrix}}.
+\]
+\item If \(y\) is the required coordinate column, then \(\xi=A_\beta y\). Hence
+\[
+\boxed{y=A_\beta^{-1}\xi=
+\begin{bmatrix}
+\xi(0)-\xi(1)\\
+\xi(1)-\xi(2)\\
+\xi(2)-\xi(3)\\
+\xi(3)
+\end{bmatrix}}.
+\]
+\end{enumerate}
+
+\section{Problem 2}
+Please show that the vectors
+\[
+A_1=\begin{bmatrix}0&1\\1&1\end{bmatrix},\quad
+A_2=\begin{bmatrix}1&1\\0&1\end{bmatrix},\quad
+A_3=\begin{bmatrix}1&0\\1&1\end{bmatrix},\quad
+A_4=\begin{bmatrix}1&1\\1&0\end{bmatrix}
+\]
+are linearly independent and form a basis for \(\C^{2\times2}\), and find the
+presentation for the given matrix
+\[
+A=\begin{bmatrix}1&0\\0&1\end{bmatrix}
+\]
+with respect to this basis.
+
+\Solution
+Suppose \(\sum_{i=1}^4 c_iA_i=0\) and set \(s=\sum_{i=1}^4 c_i\).
+Comparing entries gives \(s-c_i=0\) for \(i=1,2,3,4\), so every \(c_i=s\).
+Then \(s=4s\) forces \(s=0\), proving linear independence.
+Since \(\dim_{\C}\C^{2\times2}=4\), these matrices form a basis.
+\[
+A=\frac{-A_1+2A_2+2A_3-A_4}{3},\qquad
+\boxed{[A]_{(A_1,A_2,A_3,A_4)}=
+\begin{bmatrix}-\tfrac13&\tfrac23&\tfrac23&-\tfrac13\end{bmatrix}^{T}}.
+\]
+
+\section{Problem 3}
+Let \(\mathcal C_{n-1}(t)\) denote the set of all continuous polynomial
+functions defined on \([0,n-1]\) with constant slope in \([i-1,i]\),
+\(i=1,2,\ldots,n-1\), \(n\) is an integer.
+Let \(\boldsymbol\alpha_1,\boldsymbol\alpha_2,\ldots,\boldsymbol\alpha_s\)
+be a set of vectors of \(\mathcal V\), the linear span of
+\(\boldsymbol\alpha_1,\boldsymbol\alpha_2,\ldots,\boldsymbol\alpha_s\)
+is referred to as the set of all possible linear representations of these vectors
+\[
+\Span\{\boldsymbol\alpha_1,\boldsymbol\alpha_2,\ldots,\boldsymbol\alpha_s\}
+=\{\boldsymbol\alpha:\boldsymbol\alpha=k_1\boldsymbol\alpha_1
++k_2\boldsymbol\alpha_2+\cdots+k_s\boldsymbol\alpha_s,\ k_i\in\mathcal F\}.
+\]
+In this problem, let \(\alpha_1(t)\) and \(\alpha_2(t)\in\mathcal C_3(t)\) with
+\[
+\alpha_1=\begin{bmatrix}1\\0\\0\\1\end{bmatrix},\quad
+\alpha_2=\begin{bmatrix}1\\1\\0\\0\end{bmatrix},\qquad
+\mathcal U=\Span\{\alpha_1(t),\alpha_2(t)\},
+\]
+\(\beta_1(t)\) and \(\beta_2(t)\in\mathcal C_3(t)\) with
+\[
+\beta_1=\begin{bmatrix}0\\1\\1\\0\end{bmatrix},\quad
+\beta_2=\begin{bmatrix}0\\0\\1\\1\end{bmatrix},\qquad
+\mathcal V=\Span\{\beta_1(t),\beta_2(t)\}.
+\]
+\begin{enumerate}
+\item The sum of \(\mathcal U\) and \(\mathcal V\) is defined as
+\[
+\mathcal U+\mathcal V
+=\{\alpha=\alpha_1+\alpha_2:\alpha_1\in\mathcal U
+\text{ and }\alpha_2\in\mathcal V\}.
+\]
+Please find out a basis for \(\mathcal U+\mathcal V\) and its dimension;
+\item The intersect of \(\mathcal U\) and \(\mathcal V\) is defined as
+\[
+\mathcal U\cap\mathcal V
+=\{\alpha:\alpha\in\mathcal U\text{ and }\alpha\in\mathcal V\}.
+\]
+Please find out a basis for \(\mathcal U\cap\mathcal V\) and its dimension.
+\end{enumerate}
+
+\Solution
+By Problem 1, we may work with nodal vectors.
+\begin{enumerate}
+\item We have \(\beta_2=\alpha_1-\alpha_2+\beta_1\). Moreover,
+\[
+a\alpha_1+b\alpha_2+c\beta_1
+=(a+b,b+c,c,a)^T=0\quad\Longrightarrow\quad a=b=c=0.
+\]
+Thus a basis and the dimension are
+\[
+\boxed{\{\alpha_1(t),\alpha_2(t),\beta_1(t)\}},\qquad
+\boxed{\dim(\mathcal U+\mathcal V)=3}.
+\]
+\item Comparing components in \(a\alpha_1+b\alpha_2=c\beta_1+d\beta_2\)
+gives \(a=d,\ b=c=-a\). The common vector is \(a(\alpha_1-\alpha_2)\), so
+\[
+\boxed{\{\alpha_1(t)-\alpha_2(t)\}},\qquad
+\boxed{\dim(\mathcal U\cap\mathcal V)=1}.
+\]
+\end{enumerate}
+
+\section{Examples from the Textbook}
+\emph{Read the following examples before attempting Problem 4.}
+
+\textbf{Example 1.23} (p. 21).
+Let \(\mathcal D:\R_{n+1}[\lambda]\to\R_n[\lambda]\) be defined as
+\[
+\mathcal D(f(\lambda))=\frac{d}{d\lambda}f(\lambda)
+\qquad\forall f(\lambda)\in\R_{n+1}[\lambda].
+\]
+Then from the linearity of derivative, it is readily to check that
+\(\mathcal D\) is a linear transformation.
+
+\textbf{Example 1.24} (p. 22).
+Let \(\mathcal S:\R_n[\lambda]\to\R_{n+1}[\lambda]\) be defined as
+\[
+\mathcal S(f(\lambda))=\int_0^\lambda f(\xi)\,d\xi
+\qquad\forall f(\lambda)\in\R_n[\lambda].
+\]
+Then from the linearity of integration, it is readily to check that
+\(\mathcal S\) is a linear transformation.
+
+\begin{samepage}
+\textbf{Example 1.26} (p. 25).
+Determine the matrix representation of the linear transformation
+\(\mathcal D\in\mathcal L(\R_n[\lambda]\to\R_{n-1}[\lambda])\),
+\[
+\mathcal D(f(\lambda))=\frac{d}{d\lambda}f(\lambda)
+\]
+with respect to the bases \([1\ \lambda\ \cdots\ \lambda^n]\) and
+\([1\ \lambda\ \cdots\ \lambda^{n-1}]\).
+\end{samepage}
+
+\textbf{Example 1.27} (p. 26).
+Define the linear transformation
+\(\mathcal S\in\mathcal L(\R_n[\lambda]\to\R_{n+1}[\lambda])\) as
+\[
+\mathcal S(f(\lambda))=\int_0^\lambda f(\xi)\,d\xi
+\qquad\forall f(\lambda)\in\R_n[\lambda].
+\]
+Determine the matrix representation with respect to the basis
+\([1\ \lambda\ \cdots\ \lambda^n]\) and \([1\ \lambda\ \cdots\ \lambda^{n+1}]\).
+
+\section{Problem 4}
+Denote by \(\R_{n-1}(\lambda)\) the set of all polynomials with real coefficients
+and degrees not exceeding \(n-1\).
+With respect to the following addition and scalar product operations,
+\[
+f_1(\lambda)=\sum_{i=0}^{n-1}f_i^{(1)}\lambda^i,\qquad
+f_2(\lambda)=\sum_{i=0}^{n-1}f_i^{(2)}\lambda^i
+\]
+\[
+(f_1+f_2)(\lambda)=\sum_{i=0}^{n-1}
+\bigl(f_i^{(1)}+f_i^{(2)}\bigr)\lambda^i
+\]
+\[
+(kf_1)(\lambda)=k\sum_{i=0}^{n-1}f_i^{(1)}\lambda^i
+\]
+\begin{enumerate}
+\item Let a linear transformation
+\(\mathcal L_\alpha:\R_{n-1}(\lambda)\to\R_{n-1}(\lambda)\) be defined as
+\[
+\mathcal L_\alpha[f(\lambda+\alpha)]=f(\lambda),\qquad
+f(\lambda+\alpha),\ f(\lambda)\in\R_{n-1}(\lambda),
+\]
+where \(\alpha\) is real constant number, show that
+\(\mathcal L_\alpha\) is a linear transformation;
+\item Find out the matrix representation \(L\) for the linear transformation
+\(\mathcal L_\alpha\) with respect to the basis
+\(1,\lambda+\alpha,(\lambda+\alpha)^2,\ldots,(\lambda+\alpha)^{n-1}\),
+i.e., the matrix \(L\) satisfying
+\[
+\begin{aligned}
+&\mathcal L_\alpha\bigl([1,\lambda+\alpha,(\lambda+\alpha)^2,\ldots,
+(\lambda+\alpha)^{n-1}]\bigr)\\
+&\qquad\mathrel{\triangleq}
+[1,\lambda+\alpha,(\lambda+\alpha)^2,\ldots,(\lambda+\alpha)^{n-1}]L.
+\end{aligned}
+\]
+\end{enumerate}
+
+\Solution
+\begin{enumerate}
+\item Set \(g(\lambda)=f(\lambda+\alpha)\). Then
+\((\mathcal L_\alpha g)(\lambda)=g(\lambda-\alpha)\), and shifting does not increase degree.
+For any \(a,b\in\R\),
+\[
+\begin{aligned}
+\bigl(\mathcal L_\alpha(ag_1+bg_2)\bigr)(\lambda)
+&=ag_1(\lambda-\alpha)+bg_2(\lambda-\alpha)\\
+&=a(\mathcal L_\alpha g_1)(\lambda)+b(\mathcal L_\alpha g_2)(\lambda).
+\end{aligned}
+\]
+Thus \(\mathcal L_\alpha\) is linear.
+\item Let \(b_j(\lambda)=(\lambda+\alpha)^j\), \(0\le j\le n-1\). Then
+\[
+\mathcal L_\alpha b_j=\lambda^j
+=\sum_{i=0}^j\binom ji(-\alpha)^{j-i}b_i.
+\]
+Placing these coordinates in columns gives
+\[
+\boxed{L_{i+1,j+1}=\begin{cases}
+\displaystyle\binom ji(-\alpha)^{j-i},&0\le i\le j\le n-1,\\
+0,&0\le j<i\le n-1.
+\end{cases}}
+\]
+\end{enumerate}
+
+\end{document}
+
