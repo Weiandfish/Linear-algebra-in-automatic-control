@@ -1,0 +1,148 @@
+\documentclass[UTF8,10pt,letterpaper,fontset=fandol]{ctexart}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,enumitem,needspace}
+\usepackage[unicode,hidelinks]{hyperref}
+\pagestyle{plain}
+\raggedbottom
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1pt}
+\setlength{\emergencystretch}{2em}
+\linespread{1.1}
+\AtBeginDocument{%
+\setlength{\abovedisplayskip}{6pt}%
+\setlength{\belowdisplayskip}{6pt}%
+\setlength{\abovedisplayshortskip}{3pt}%
+\setlength{\belowdisplayshortskip}{3pt}}
+\setcounter{secnumdepth}{0}
+\setlist[enumerate]{label=(\arabic*),leftmargin=2em,itemsep=0.25em,topsep=0.2em}
+\ctexset{section={format=\Large\bfseries,beforeskip=1.2ex,afterskip=0.8ex}}
+\newcommand{\C}{\mathbb C}
+\newcommand{\F}{\mathbb F}
+\begin{document}
+\begin{center}
+{\LARGE Homework 8}\\[0.6em]
+October 30, 2026\\[0.25em]
+Name: YuanHao Tang\quad Student ID: 3120265621
+\end{center}
+
+\section{Problem 1}
+Let
+
+\[
+A=\begin{pmatrix}-7&16&8\\-4&9&4\\-4&7&5\end{pmatrix}.
+\]
+Find out the minimal polynomial of $A$.
+
+\par\Needspace{4\baselineskip}\textbf{Solution}\par
+Calculation gives $\chi_A=(\lambda-1)(\lambda-3)^2$ and $\operatorname{rank}(A-3I)=2$. The eigenvalue three has geometric multiplicity one and a size-two block. Thus
+
+\[
+\boxed{m_A(\lambda)=(\lambda-1)(\lambda-3)^2}.
+\]
+
+\section{Problem 2}
+Let
+
+\[
+A=\begin{pmatrix}0&1&0&0\\-1&2&0&0\\0&0&0&1\\0&0&-4&-4\end{pmatrix}.
+\]
+Find out the minimal polynomial of $A$.
+
+\par\Needspace{4\baselineskip}\textbf{Solution}\par
+For the diagonal blocks $B,C$, $(B-I)^2=0$ with $B\ne I$, and $(C+2I)^2=0$ with $C\ne-2I$. Thus $m_B=(\lambda-1)^2$, $m_C=(\lambda+2)^2$, and
+
+\[
+\boxed{m_A=\operatorname{lcm}(m_B,m_C)=(\lambda-1)^2(\lambda+2)^2}.
+\]
+
+\section{Problem 3}
+In Problem 3 of Homework 7, $A$ was a matrix whose elementary divisors are
+
+\[
+\begin{gathered}
+\lambda+3,\quad\lambda+3,\quad(\lambda+3)^2,\quad\lambda+2+5j,\quad\lambda+2-5j,\\
+(\lambda+2+5j)^2,\quad(\lambda+2-5j)^2.
+\end{gathered}
+\]
+Based on that result, find out the minimal polynomial of $A$.
+
+\par\Needspace{4\baselineskip}\textbf{Solution}\par
+Take the largest elementary-divisor exponent at each root, which is two. Combining conjugate factors gives
+
+\[
+\boxed{m_A(\lambda)=(\lambda+3)^2\bigl((\lambda+2)^2+25\bigr)^2}.
+\]
+
+\newpage
+
+\section{Problem 4}
+In Problem 4 of Homework 7, $A$ was a matrix whose elementary divisors are
+
+\[
+\begin{gathered}
+(\lambda+1),\quad(\lambda+1)^2,\quad(\lambda+1+j),\quad(\lambda+1-j),\\
+(\lambda+1)^2,\quad(\lambda+1+j)^2,\quad(\lambda+1-j)^2.
+\end{gathered}
+\]
+Based on that result, find out the minimal polynomial of $A$.
+
+\par\Needspace{4\baselineskip}\textbf{Solution}\par
+Again the largest exponent at every root is two, so
+
+\[
+\boxed{m_A(\lambda)=(\lambda+1)^2\bigl((\lambda+1)^2+1\bigr)^2}.
+\]
+
+\section{Problem 5}
+Let $\mathcal A\in L(\C_n[\lambda])$ be defined as
+
+\[
+\mathcal A[f(\lambda)]=f(\lambda+a),\qquad\forall f(\lambda)\in\C_n[\lambda].
+\]
+for a nonzero constant $a\in\C$. Find out
+
+\begin{enumerate}
+\item all the generalized eigenvectors of $\mathcal A$;
+
+\item the transition matrix $X$ that reduces $A$ to the Jordan canonical form $J=X^{-1}AX$;
+
+\item the generating elements $\beta_i(s)$, $i=1,2,\ldots,l$, such that
+
+\[
+\C_n[s]=\mathcal S_{\mathcal A}[\beta_1(s)]\dotplus\mathcal S_{\mathcal A}[\beta_2(s)]\dotplus\cdots\dotplus\mathcal S_{\mathcal A}[\beta_l(s)].
+\]
+
+\end{enumerate}
+
+\par\Needspace{4\baselineskip}\textbf{Solution}\par
+Write the polynomial variable as $s$, put $\Delta=\mathcal A-I$, and use the basis $(1,s,\ldots,s^n)$ for $A$.
+
+\begin{enumerate}
+\item The only eigenvalue is one. For any nonzero $f$ of degree $d$ with leading coefficient $c_d$,
+
+\[
+\Delta^d f=c_d d!a^d\ne0,\qquad\Delta^{d+1}f=0.
+\]
+Thus every nonzero polynomial is a generalized eigenvector, and a degree-$d$ polynomial has exact order $d+1$.
+
+\item Let $f_0=1$ and take the monomial coefficient columns of $f_k$ as $X$, with indices starting at zero:
+
+\[
+f_k(s)=\frac{\prod_{r=0}^{k-1}(s-ra)}{k!a^k}\ (1\le k\le n),\qquad\boxed{X_{ik}=[s^i]f_k(s)}.
+\]
+Here $[s^i]$ extracts a coefficient. The upper triangular $X$ has nonzero diagonal $1/(k!a^k)$. Since $\mathcal A f_0=f_0$ and $\mathcal A f_k=f_k+f_{k-1}$,
+
+\[
+\boxed{AX=XJ_{n+1}(1),\qquad X^{-1}AX=J_{n+1}(1)}.
+\]
+
+\item One generator suffices:
+
+\[
+\boxed{l=1,\qquad\beta_1(s)=s^n,\qquad\C_n[s]=\mathcal S_{\mathcal A}[s^n]}.
+\]
+The polynomials $s^n,\Delta s^n,\ldots,\Delta^ns^n$ have distinct degrees $n,n-1,\ldots,0$ with nonzero leading coefficients, so they form a basis. Since $\Delta=\mathcal A-I$, each lies in $\mathcal S_{\mathcal A}[s^n]$.
+
+\end{enumerate}
+
+\end{document}

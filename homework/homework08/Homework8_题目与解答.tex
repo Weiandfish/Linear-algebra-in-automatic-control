@@ -1,0 +1,148 @@
+\documentclass[UTF8,10pt,letterpaper,fontset=fandol]{ctexart}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,enumitem,needspace}
+\usepackage[unicode,hidelinks]{hyperref}
+\pagestyle{plain}
+\raggedbottom
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1pt}
+\setlength{\emergencystretch}{2em}
+\linespread{1.1}
+\AtBeginDocument{%
+\setlength{\abovedisplayskip}{6pt}%
+\setlength{\belowdisplayskip}{6pt}%
+\setlength{\abovedisplayshortskip}{3pt}%
+\setlength{\belowdisplayshortskip}{3pt}}
+\setcounter{secnumdepth}{0}
+\setlist[enumerate]{label=(\arabic*),leftmargin=2em,itemsep=0.25em,topsep=0.2em}
+\ctexset{section={format=\Large\bfseries,beforeskip=1.2ex,afterskip=0.8ex}}
+\newcommand{\C}{\mathbb C}
+\newcommand{\F}{\mathbb F}
+\begin{document}
+\begin{center}
+{\LARGE 作业 8}\\[0.6em]
+2026 年 10 月 30 日\\[0.25em]
+姓名：YuanHao Tang\quad 学号：3120265621
+\end{center}
+
+\section{第 1 题}
+设
+
+\[
+A=\begin{pmatrix}-7&16&8\\-4&9&4\\-4&7&5\end{pmatrix}.
+\]
+求 $A$ 的最小多项式。
+
+\par\Needspace{4\baselineskip}\textbf{解答}\par
+计算得 $\chi_A=(\lambda-1)(\lambda-3)^2$，且 $\operatorname{rank}(A-3I)=2$。特征值 $3$ 的几何重数为 $1$，对应一个二阶块，因此
+
+\[
+\boxed{m_A(\lambda)=(\lambda-1)(\lambda-3)^2}.
+\]
+
+\section{第 2 题}
+设
+
+\[
+A=\begin{pmatrix}0&1&0&0\\-1&2&0&0\\0&0&0&1\\0&0&-4&-4\end{pmatrix}.
+\]
+求 $A$ 的最小多项式。
+
+\par\Needspace{4\baselineskip}\textbf{解答}\par
+记两个对角块为 $B,C$。有 $(B-I)^2=0$、$B\ne I$，以及 $(C+2I)^2=0$、$C\ne-2I$。故 $m_B=(\lambda-1)^2$、$m_C=(\lambda+2)^2$，得到
+
+\[
+\boxed{m_A=\operatorname{lcm}(m_B,m_C)=(\lambda-1)^2(\lambda+2)^2}.
+\]
+
+\section{第 3 题}
+第七次作业第 3 题中，矩阵 $A$ 的初等因子为
+
+\[
+\begin{gathered}
+\lambda+3,\quad\lambda+3,\quad(\lambda+3)^2,\quad\lambda+2+5j,\quad\lambda+2-5j,\\
+(\lambda+2+5j)^2,\quad(\lambda+2-5j)^2.
+\end{gathered}
+\]
+据此求 $A$ 的最小多项式。
+
+\par\Needspace{4\baselineskip}\textbf{解答}\par
+对每个根取初等因子的最大指数，均为 $2$。共轭因子相乘后得
+
+\[
+\boxed{m_A(\lambda)=(\lambda+3)^2\bigl((\lambda+2)^2+25\bigr)^2}.
+\]
+
+\newpage
+
+\section{第 4 题}
+第七次作业第 4 题中，矩阵 $A$ 的初等因子为
+
+\[
+\begin{gathered}
+(\lambda+1),\quad(\lambda+1)^2,\quad(\lambda+1+j),\quad(\lambda+1-j),\\
+(\lambda+1)^2,\quad(\lambda+1+j)^2,\quad(\lambda+1-j)^2.
+\end{gathered}
+\]
+据此求 $A$ 的最小多项式。
+
+\par\Needspace{4\baselineskip}\textbf{解答}\par
+同样对每个根取最大指数 $2$，因此
+
+\[
+\boxed{m_A(\lambda)=(\lambda+1)^2\bigl((\lambda+1)^2+1\bigr)^2}.
+\]
+
+\section{第 5 题}
+设 $\mathcal A\in L(\C_n[\lambda])$ 定义为
+
+\[
+\mathcal A[f(\lambda)]=f(\lambda+a),\qquad\forall f(\lambda)\in\C_n[\lambda].
+\]
+其中 $a\in\C$ 为非零常数。求：
+
+\begin{enumerate}
+\item $\mathcal A$ 的全部广义特征向量；
+
+\item 使 $J=X^{-1}AX$ 的过渡矩阵 $X$；
+
+\item 生成元 $\beta_i(s)$，$i=1,\ldots,l$，使
+
+\[
+\C_n[s]=\mathcal S_{\mathcal A}[\beta_1(s)]\dotplus\mathcal S_{\mathcal A}[\beta_2(s)]\dotplus\cdots\dotplus\mathcal S_{\mathcal A}[\beta_l(s)].
+\]
+
+\end{enumerate}
+
+\par\Needspace{4\baselineskip}\textbf{解答}\par
+将多项式变量记为 $s$，令 $\Delta=\mathcal A-I$，矩阵 $A$ 关于基 $(1,s,\ldots,s^n)$。
+
+\begin{enumerate}
+\item 唯一特征值为 $1$。任取非零 $f$，若 $\deg f=d$、首项系数为 $c_d$，则
+
+\[
+\Delta^d f=c_d d!a^d\ne0,\qquad\Delta^{d+1}f=0.
+\]
+所以全部非零多项式都是广义特征向量，次数为 $d$ 的多项式确切阶数为 $d+1$。
+
+\item 取 $f_0=1$，并令 $X$ 的第 $k$ 列为 $f_k$ 的单项式系数列（行列从 $0$ 编号）：
+
+\[
+f_k(s)=\frac{\prod_{r=0}^{k-1}(s-ra)}{k!a^k}\ (1\le k\le n),\qquad\boxed{X_{ik}=[s^i]f_k(s)}.
+\]
+$[s^i]$ 表示取系数。$X$ 上三角，对角元 $1/(k!a^k)\ne0$。由 $\mathcal A f_0=f_0$、$\mathcal A f_k=f_k+f_{k-1}$，得
+
+\[
+\boxed{AX=XJ_{n+1}(1),\qquad X^{-1}AX=J_{n+1}(1)}.
+\]
+
+\item 可只取一个生成元：
+
+\[
+\boxed{l=1,\qquad\beta_1(s)=s^n,\qquad\C_n[s]=\mathcal S_{\mathcal A}[s^n]}.
+\]
+因为 $s^n,\Delta s^n,\ldots,\Delta^ns^n$ 的次数依次为 $n,n-1,\ldots,0$，首项系数均非零，所以它们是一组基；又 $\Delta=\mathcal A-I$，这些向量都属于 $\mathcal S_{\mathcal A}[s^n]$。
+
+\end{enumerate}
+
+\end{document}

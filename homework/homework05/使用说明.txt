@@ -1,0 +1,25 @@
+Homework 5 工作空间
+
+姓名：YuanHao Tang；学号：3120265621。
+作业日期：2026 年 10 月 21 日。
+
+中文版：Homework5_题目与解答.tex / Homework5_题目与解答.pdf
+英文版：Homework5_英文题目与解答.tex / Homework5_英文题目与解答.pdf
+原始题目：Homework5_原始题目.pdf
+
+中文版翻译题目并用中文作答；英文版保留英文原题并用英文作答。
+两版均保留四道题与全部子题，仅添加必要解答步骤。
+第 2 题定义在全体复系数多项式上；第 3、4 题的 C_n 表示次数不超过 n，维数为 n+1。
+线性算子的初等因子按其特征矩阵计算，第 4 题用 mu 区分特征参数和原变量 s。
+
+重新编译：
+1. 修改并保存 .tex。
+2. 双击“编译PDF.cmd”。
+3. 出现 SUCCESS 即表示两份 PDF 已更新；按任意键关闭窗口。
+若出现 FAILED，请查看错误详情，修正源文件后重试。
+
+也可在此文件夹的 PowerShell 中运行：
+powershell -NoProfile -ExecutionPolicy Bypass -File .\build.ps1
+
+脚本使用本机 XeLaTeX，并通过英文临时路径处理中文文件名。
+第六讲双语笔记位于 notes\lecture06，从 00_阅读导航.md 开始。

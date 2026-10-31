@@ -1,0 +1,106 @@
+% Chinese questions and concise solutions. Compile using XeLaTeX.
+\documentclass[UTF8,10pt,letterpaper,fontset=fandol]{ctexart}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{needspace}
+\usepackage[unicode,hidelinks]{hyperref}
+\pagestyle{plain}
+\raggedbottom
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1pt}
+\setlength{\emergencystretch}{2em}
+\setcounter{secnumdepth}{0}
+\ctexset{section={format=\Large\bfseries,beforeskip=1.2ex,afterskip=0.8ex}}
+\newcommand{\F}{\mathbb F}
+\newcommand{\Solution}{\par\Needspace{4\baselineskip}\textbf{解答}\par}
+\begin{document}
+\begin{center}
+{\LARGE 作业 4}\\[0.6em]
+2026 年 10 月 16 日\\[0.25em]
+姓名：YuanHao Tang\quad 学号：3120265621
+\end{center}
+
+\section{第 1 题}
+求下列 $\lambda$-矩阵的 Smith 标准形：
+\[
+A(\lambda)=\begin{pmatrix}
+1-\lambda&\lambda^2&\lambda\\
+2\lambda-1&\lambda(1-\lambda)&-2\lambda\\
+1+\lambda^2&\lambda^2&-\lambda^2
+\end{pmatrix}.
+\]
+\Solution
+记 $D_k$ 为全部 $k$ 阶子式的首一最大公因式，$D_0=1$，则不变多项式为 $d_k=D_k/D_{k-1}$。
+由 $2(1-\lambda)+(2\lambda-1)=1$，得 $D_1=1$。第二、三列都含因子 $\lambda$，故所有二阶子式均被 $\lambda$ 整除，而
+\[
+\begin{vmatrix}1-\lambda&\lambda\\2\lambda-1&-2\lambda\end{vmatrix}=-\lambda,
+\]
+所以 $D_2=\lambda$。又 $\det A=-\lambda^2(\lambda+1)$，故 $D_3=\lambda^2(\lambda+1)$。因此
+\[
+\boxed{S_A(\lambda)=\operatorname{diag}\bigl(1,\lambda,\lambda(\lambda+1)\bigr)}.
+\]
+
+\section{第 2 题}
+设 $A(\lambda)$ 为下列 $n\times n$ 的 $\lambda$-矩阵：
+\[
+A(\lambda)=\begin{pmatrix}
+\lambda-a&b_1&0&\cdots&0\\
+0&\lambda-a&b_2&\ddots&\vdots\\
+\vdots&\ddots&\ddots&\ddots&0\\
+0&\cdots&0&\lambda-a&b_{n-1}\\
+0&\cdots&\cdots&0&\lambda-a
+\end{pmatrix},
+\]
+其中 $b_1,b_2,\ldots,b_{n-1}$ 均为非零常数。求 $A(\lambda)$ 的不变多项式。
+\Solution
+对 $1\le k<n$，取第 $1,\ldots,k$ 行和第 $2,\ldots,k+1$ 列，所得子式为非零常数
+$b_1\cdots b_k$，故 $D_k=1$。又 $D_n=\det A=(\lambda-a)^n$，因此
+\[
+\boxed{d_1=\cdots=d_{n-1}=1,\qquad d_n=(\lambda-a)^n}.
+\]
+
+\newpage
+\section{第 3 题}
+求下列 $\lambda$-矩阵的 Smith 标准形：
+\[
+A(\lambda)=\begin{pmatrix}
+\lambda&0&\cdots&0&a_0\\
+-1&\lambda&\ddots&\vdots&a_1\\
+0&-1&\ddots&0&\vdots\\
+\vdots&\ddots&\ddots&\lambda&a_{n-2}\\
+0&\cdots&0&-1&\lambda+a_{n-1}
+\end{pmatrix}.
+\]
+\Solution
+对 $1\le k<n$，第 $2,\ldots,k+1$ 行与第 $1,\ldots,k$ 列构成的子式为 $(-1)^k$，故 $D_k=1$。
+按最后一列展开可得
+\[
+D_n=\det A=\lambda^n+a_{n-1}\lambda^{n-1}+\cdots+a_1\lambda+a_0=:p(\lambda).
+\]
+因此
+\[
+\boxed{S_A(\lambda)=\operatorname{diag}\bigl(\underbrace{1,\ldots,1}_{n-1},p(\lambda)\bigr)}.
+\]
+
+\section{第 4 题}
+对矩阵 $A\in\F^{n\times n}$ 及不定元 $\lambda$，称 $\lambda E-A$ 为 $A$ 的特征矩阵，其中 $E$ 是单位矩阵。求下列矩阵的特征矩阵的 Smith 标准形：
+\[
+A=\begin{pmatrix}-7&-12&-6\\3&5&3\\3&6&2\end{pmatrix}.
+\]
+\Solution
+当域的特征不为 $3$（包括实数域和复数域）时，令
+\[
+B(\lambda)=\lambda I-A=\begin{pmatrix}
+\lambda+7&12&6\\-3&\lambda-5&-3\\-3&-6&\lambda-2
+\end{pmatrix}.
+\]
+因含非零常数 $-3$，$D_1=1$。$B(-1)$ 的秩为 $1$，故全部二阶子式含因子 $\lambda+1$，而
+\[
+\begin{vmatrix}\lambda+7&6\\-3&-3\end{vmatrix}=-3(\lambda+1),
+\]
+所以 $D_2=\lambda+1$。又 $D_3=\det B=(\lambda+1)^2(\lambda-2)$，故
+\[
+\boxed{S_B(\lambda)=\operatorname{diag}\bigl(1,\lambda+1,(\lambda+1)(\lambda-2)\bigr)}.
+\]
+若域的特征为 $3$，则 $A=-I$，标准形为 $\boxed{(\lambda+1)I_3}$。
+\end{document}

@@ -1,0 +1,107 @@
+% Chinese questions and concise solutions. Compile using XeLaTeX.
+\documentclass[UTF8,10pt,letterpaper,fontset=fandol]{ctexart}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{needspace}
+\usepackage[unicode,hidelinks]{hyperref}
+\pagestyle{plain}
+\raggedbottom
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1pt}
+\setlength{\emergencystretch}{2em}
+\setlist[enumerate]{label=(\arabic*),leftmargin=2em,itemsep=0.3em,topsep=0.2em}
+\setcounter{secnumdepth}{0}
+\ctexset{section={format=\Large\bfseries,beforeskip=1.2ex,afterskip=0.8ex}}
+\newcommand{\F}{\mathbb F}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Ideal}[1]{\langle #1\rangle}
+\newcommand{\Solution}{\par\Needspace{4\baselineskip}\textbf{解答}\par}
+\begin{document}
+\begin{center}
+{\LARGE 作业 3}\par
+\vspace{0.6em}
+2026 年 10 月 15 日\par
+姓名：YuanHao Tang\quad 学号：3120265621
+\end{center}
+
+\section{第 1 题}
+设 \(C_{n-1}(t)\) 为定义在 \([0,n-1]\) 上、在每个区间 \([i-1,i]\) 内斜率恒定的连续分段线性函数空间，
+其中 \(i=1,\ldots,n-1\)。定义 \(\mathcal A:C_{n-1}(t)\to C_{n-1}(t)\) 为
+\[
+\mathcal A[f(t)]=f(n-1-t).
+\]
+\begin{enumerate}
+\item 证明 \(\mathcal A\) 是线性变换。
+\item 设 \(\epsilon_j(t)\in C_{n-1}(t)\)，\(j=1,\ldots,n\)，为满足
+\(\epsilon_j(i-1)=\delta_{ij}\)、\(i,j=1,\ldots,n\) 的节点基。
+求 \(\mathcal A\) 关于这组基的矩阵表示。
+\end{enumerate}
+
+\Solution
+\begin{enumerate}
+\item 反射 \(t\mapsto n-1-t\) 将网格区间映到网格区间，因此反射后的函数仍连续、分段线性，故映射定义良好。
+对任意函数 \(f,g\) 及标量 \(a,b\)，
+\[
+\begin{aligned}
+\mathcal A(af+bg)(t)&=a f(n-1-t)+b g(n-1-t)\\
+&=a(\mathcal Af)(t)+b(\mathcal Ag)(t),
+\end{aligned}
+\]
+所以 \(\mathcal A\) 线性。
+\item 在各节点上，
+\[
+(\mathcal A\epsilon_j)(i-1)=\epsilon_j(n-i)=\delta_{n+1-i,j}=\delta_{i,n+1-j}.
+\]
+由节点值唯一确定函数，得 \(\mathcal A\epsilon_j=\epsilon_{n+1-j}\)。因此
+\[
+\boxed{[\mathcal A]_{\epsilon}=J_n=(\delta_{i,n+1-j})_{i,j=1}^n},\qquad
+(J_n)_{ij}=\begin{cases}1,&i+j=n+1,\\0,&i+j\ne n+1.\end{cases}
+\]
+即反对角线为 \(1\)、其余元素为 \(0\) 的逆序矩阵。
+\end{enumerate}
+
+\section{第 2 题}
+设多项式理想 \(I_1\)、\(I_2\) 分别由
+\[
+a_1(\lambda)=(\lambda+1)(\lambda+2)^2,\qquad
+a_2(\lambda)=(\lambda+2)(\lambda+3)(\lambda+5)
+\]
+生成。求 \(I_1+I_2\) 与 \(I_1\cap I_2\)。
+
+\Solution
+在 \(\F[\lambda]\) 中计算，其中 \(\F=\R\) 或 \(\C\)。由
+\(I_1+I_2=\Ideal{\gcd(a_1,a_2)}\)、
+\(I_1\cap I_2=\Ideal{\operatorname{lcm}(a_1,a_2)}\)，
+分别取各因子的较小、较大重数，得
+\[
+\boxed{I_1+I_2=\Ideal{\lambda+2}},
+\]
+\[
+\boxed{I_1\cap I_2=\Ideal{(\lambda+1)(\lambda+2)^2(\lambda+3)(\lambda+5)}}.
+\]
+
+\section{第 3 题}
+设多项式理想 \(I_1\)、\(I_2\) 分别由
+\[
+\begin{aligned}
+a_1(\lambda)&=\lambda^4+\lambda^3-\lambda-1,\\
+a_2(\lambda)&=\lambda^4+2\lambda^3+3\lambda^2+2\lambda+1
+\end{aligned}
+\]
+生成。求 \(I_1+I_2\) 与 \(I_1\cap I_2\)。
+
+\Solution
+沿用第 2 题的系数域，令 \(q(\lambda)=\lambda^2+\lambda+1\)。因式分解得
+\[
+a_1=(\lambda+1)(\lambda-1)q=(\lambda^2-1)q,\qquad a_2=q^2.
+\]
+因为 \(q(1)=3\)、\(q(-1)=1\)，故 \(\gcd(\lambda^2-1,q)=1\)。于是
+\[
+\boxed{I_1+I_2=\Ideal{\lambda^2+\lambda+1}},
+\]
+\[
+\boxed{I_1\cap I_2=\Ideal{(\lambda^2-1)(\lambda^2+\lambda+1)^2}}.
+\]
+\end{document}

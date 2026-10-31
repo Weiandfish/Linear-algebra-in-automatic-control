@@ -1,0 +1,106 @@
+% Original English questions and concise English solutions. Compile using XeLaTeX.
+\documentclass[UTF8,10pt,letterpaper,fontset=fandol]{ctexart}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{needspace}
+\usepackage[unicode,hidelinks]{hyperref}
+\pagestyle{plain}
+\raggedbottom
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1pt}
+\setlength{\emergencystretch}{2em}
+\setcounter{secnumdepth}{0}
+\ctexset{section={format=\Large\bfseries,beforeskip=1.2ex,afterskip=0.8ex}}
+\newcommand{\F}{\mathbb F}
+\newcommand{\Solution}{\par\Needspace{4\baselineskip}\textbf{Solution}\par}
+\begin{document}
+\begin{center}
+{\LARGE Homework 4}\\[0.6em]
+October 16, 2026\\[0.25em]
+Name: YuanHao Tang\quad Student ID: 3120265621
+\end{center}
+
+\section{Problem 1}
+Find out the Smith canonical form of the $\lambda$-matrix
+\[
+A(\lambda)=\begin{pmatrix}
+1-\lambda&\lambda^2&\lambda\\
+2\lambda-1&\lambda(1-\lambda)&-2\lambda\\
+1+\lambda^2&\lambda^2&-\lambda^2
+\end{pmatrix}.
+\]
+\Solution
+Let $D_k$ be the monic gcd of all $k\times k$ minors, with $D_0=1$. Then the invariant polynomials are $d_k=D_k/D_{k-1}$.
+Since $2(1-\lambda)+(2\lambda-1)=1$, $D_1=1$. Columns two and three are divisible by $\lambda$, so every second-order minor is divisible by $\lambda$. Moreover,
+\[
+\begin{vmatrix}1-\lambda&\lambda\\2\lambda-1&-2\lambda\end{vmatrix}=-\lambda,
+\]
+giving $D_2=\lambda$. Since $\det A=-\lambda^2(\lambda+1)$, $D_3=\lambda^2(\lambda+1)$. Thus
+\[
+\boxed{S_A(\lambda)=\operatorname{diag}\bigl(1,\lambda,\lambda(\lambda+1)\bigr)}.
+\]
+
+\section{Problem 2}
+Let $A(\lambda)$ be the $n\times n$ $\lambda$-matrix
+\[
+A(\lambda)=\begin{pmatrix}
+\lambda-a&b_1&0&\cdots&0\\
+0&\lambda-a&b_2&\ddots&\vdots\\
+\vdots&\ddots&\ddots&\ddots&0\\
+0&\cdots&0&\lambda-a&b_{n-1}\\
+0&\cdots&\cdots&0&\lambda-a
+\end{pmatrix},
+\]
+where $b_1,b_2,\ldots,b_{n-1}$ are all nonzero constants. Find out the invariant polynomials of $A(\lambda)$.
+\Solution
+For $1\le k<n$, the minor on rows $1,\ldots,k$ and columns $2,\ldots,k+1$ is the nonzero constant $b_1\cdots b_k$, so $D_k=1$.
+Also $D_n=\det A=(\lambda-a)^n$. Therefore
+\[
+\boxed{d_1=\cdots=d_{n-1}=1,\qquad d_n=(\lambda-a)^n}.
+\]
+
+\newpage
+\section{Problem 3}
+Find out the Smith canonical form of the $\lambda$-matrix
+\[
+A(\lambda)=\begin{pmatrix}
+\lambda&0&\cdots&0&a_0\\
+-1&\lambda&\ddots&\vdots&a_1\\
+0&-1&\ddots&0&\vdots\\
+\vdots&\ddots&\ddots&\lambda&a_{n-2}\\
+0&\cdots&0&-1&\lambda+a_{n-1}
+\end{pmatrix}.
+\]
+\Solution
+For $1\le k<n$, the minor on rows $2,\ldots,k+1$ and columns $1,\ldots,k$ equals $(-1)^k$, hence $D_k=1$.
+Expanding along the last column gives
+\[
+D_n=\det A=\lambda^n+a_{n-1}\lambda^{n-1}+\cdots+a_1\lambda+a_0=:p(\lambda).
+\]
+Consequently,
+\[
+\boxed{S_A(\lambda)=\operatorname{diag}\bigl(\underbrace{1,\ldots,1}_{n-1},p(\lambda)\bigr)}.
+\]
+
+\section{Problem 4}
+With respect to a matrix $A\in\F^{n\times n}$ and an indeterminate $\lambda$, $\lambda E-A$ is called the eigenmatrix, where $E$ is the identity matrix. Find out the Smith canonical form of the eigenmatrix of the following matrix
+\[
+A=\begin{pmatrix}-7&-12&-6\\3&5&3\\3&6&2\end{pmatrix}.
+\]
+\Solution
+If $\operatorname{char}\F\ne3$, including the real and complex fields, put
+\[
+B(\lambda)=\lambda I-A=\begin{pmatrix}
+\lambda+7&12&6\\-3&\lambda-5&-3\\-3&-6&\lambda-2
+\end{pmatrix}.
+\]
+The nonzero constant entry $-3$ gives $D_1=1$. Since $B(-1)$ has rank one, every second-order minor is divisible by $\lambda+1$, while
+\[
+\begin{vmatrix}\lambda+7&6\\-3&-3\end{vmatrix}=-3(\lambda+1).
+\]
+Thus $D_2=\lambda+1$. Also $D_3=\det B=(\lambda+1)^2(\lambda-2)$, so
+\[
+\boxed{S_B(\lambda)=\operatorname{diag}\bigl(1,\lambda+1,(\lambda+1)(\lambda-2)\bigr)}.
+\]
+If $\operatorname{char}\F=3$, then $A=-I$ and the Smith form is $\boxed{(\lambda+1)I_3}$.
+\end{document}

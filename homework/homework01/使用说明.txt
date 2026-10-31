@@ -11,5 +11,19 @@ Homework 1 工作空间
 原始作业：Homework1_原始题目.pdf，供核对。
 两版均保留四道题与四个教材例题，解答只保留必要步骤。
 
-重新编译：在此文件夹的 PowerShell 中运行 .\build.ps1。
-脚本使用本机 XeLaTeX，一次编译两份源码；用 PDF 阅读器查看结果。
+姓名：YuanHao Tang；学号：3120265621。
+
+最方便的编译方式：
+1. 修改并保存 .tex 文件。
+2. 双击同一文件夹里的“编译PDF.cmd”。
+3. 等待出现 SUCCESS，两份 PDF 即已更新；窗口会保留结果，按任意键关闭。
+如果出现 FAILED，请查看窗口中的错误详情，修正 .tex 后再次双击。
+
+也可以打开 PowerShell，依次运行：
+Set-Location -LiteralPath 'C:\Users\15458\Documents\控制中的线性代数\homework\homework01'
+powershell -NoProfile -ExecutionPolicy Bypass -File .\build.ps1
+
+脚本使用本机已安装的 XeLaTeX，一次编译两份源码；PDF 会覆盖更新到同一文件夹。
+修改 .tex 并保存后，重新运行上述命令即可。用 PDF 阅读器查看结果。
+请使用 XeLaTeX；源码含中文，不适合用 pdfLaTeX 编译。
+ExecutionPolicy Bypass 只对本次 PowerShell 进程生效，不永久修改系统设置。

@@ -1,0 +1,213 @@
+% Original English questions and concise English solutions. Compile using XeLaTeX.
+\documentclass[UTF8,10pt,letterpaper,fontset=fandol]{ctexart}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{needspace}
+\usepackage{etoolbox}
+\usepackage[unicode,hidelinks]{hyperref}
+\pagestyle{plain}
+\raggedbottom
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1pt}
+\setlength{\emergencystretch}{2em}
+\setlist[enumerate]{label=(\arabic*),leftmargin=2em,itemsep=0.3em,topsep=0.2em}
+\setcounter{secnumdepth}{0}
+\ctexset{section={format=\Large\bfseries,beforeskip=1.2ex,afterskip=0.8ex}}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\F}{\mathbb F}
+\newcommand{\Span}{\operatorname{span}}
+\newcommand{\Solution}{\par\Needspace{5\baselineskip}\textbf{Solution}\par}
+\newcommand{\CompactMath}{%
+  \setlength{\abovedisplayskip}{5pt plus 2pt minus 1pt}%
+  \setlength{\belowdisplayskip}{5pt plus 2pt minus 1pt}%
+  \setlength{\abovedisplayshortskip}{3pt plus 1pt}%
+  \setlength{\belowdisplayshortskip}{5pt plus 2pt minus 1pt}}
+\apptocmd{\normalsize}{\CompactMath}{}{}
+\begin{document}
+\begin{center}
+{\LARGE Homework 2}\par
+\vspace{0.6em}
+October 10, 2026\par
+Name: YuanHao Tang\quad Student ID: 3120265621
+\end{center}
+\begin{center}\emph{Some of the problems are collected from the examples in the book.}\end{center}
+
+\section{Problem 1}
+Let \(\mathcal A\in\mathcal L(\mathcal C_2(t)\to\mathcal C_2(t))\).
+With respect to the bases \(\alpha_1(t)\), \(\alpha_2(t)\) and \(\alpha_3(t)\) with
+\[
+\alpha_1=\begin{bmatrix}1\\1\\1\end{bmatrix},\quad
+\alpha_2=\begin{bmatrix}1\\1\\0\end{bmatrix},\quad
+\alpha_3=\begin{bmatrix}1\\0\\0\end{bmatrix},
+\]
+the matrix representation is
+\[
+A=\begin{bmatrix}1&1&-1\\0&1&2\\1&2&1\end{bmatrix}.
+\]
+Determine \(\mathcal N(\mathcal A)\) and \(\mathcal R(\mathcal A)\).
+
+\Solution
+Solving \(Ax=0\) gives \(x_2=-2x_3\) and \(x_1=3x_3\). The first two columns
+are independent, and the third equals \(-3\) times the first plus \(2\) times the second. Thus
+\[
+\boxed{\mathcal N(\mathcal A)=\Span\{3\alpha_1(t)-2\alpha_2(t)+\alpha_3(t)\}},
+\]
+\[
+\boxed{\mathcal R(\mathcal A)=\Span\{\alpha_1(t)+\alpha_3(t),\,
+\alpha_1(t)+\alpha_2(t)+2\alpha_3(t)\}}.
+\]
+Their dimensions are \(1\) and \(2\), respectively.
+
+\section{Problem 2}
+Show the following propositions:
+\begin{enumerate}
+\item \(A\in\F^{n\times n}\), then \(S=\{x(t):\dot x(t)=Ax(t)\}\) is a linear space
+and is isomorphic with \(\C^n\), where
+\[
+\dot x(t)\triangleq
+\begin{bmatrix}\dfrac{dx_1(t)}{dt}&\dfrac{dx_2(t)}{dt}&\cdots&\dfrac{dx_n(t)}{dt}\end{bmatrix}^{T}.
+\]
+\item \(A\in\C^{n\times n}\), \(B\in\C^{m\times m}\) are given matrices,
+\(\mathcal T_{A,B}:\C^{n\times m}\to\C^{n\times m}\) is defined as
+\[
+\mathcal T_{A,B}(X)=AX+XB,
+\]
+then \(\mathcal T\in\mathcal L(\C^{n\times m}\to\C^{n\times m})\).
+\end{enumerate}
+
+\Solution
+\begin{enumerate}
+\item Take \(\F=\C\), consistently with the stated \(\C^n\); for \(\F=\R\), the corresponding
+space is \(\R^n\). For solutions \(x,y\) on a common interval containing \(0\) and scalars \(a,b\),
+\[
+\frac{d}{dt}(ax+by)=aAx+bAy=A(ax+by).
+\]
+The zero function also belongs to \(S\), so \(S\) is a linear space.
+Existence and uniqueness for the constant-coefficient initial-value problem imply that
+the linear evaluation map \(E:S\to\C^n\), \(E(x)=x(0)\), is bijective.
+Its inverse is \(c\mapsto x(t)=e^{At}c\). Hence \(\boxed{S\cong\C^n}\).
+\item For any \(X,Y\in\C^{n\times m}\) and \(a,b\in\C\),
+\[
+\begin{aligned}
+\mathcal T_{A,B}(aX+bY)
+&=A(aX+bY)+(aX+bY)B\\
+&=a(AX+XB)+b(AY+YB)\\
+&=a\mathcal T_{A,B}(X)+b\mathcal T_{A,B}(Y).
+\end{aligned}
+\]
+Therefore \(\mathcal T_{A,B}\) is linear.
+\end{enumerate}
+
+\section{Problem 3}
+Given the following two sets of bases for \(\mathcal V^3\):
+\[
+\begin{array}{ll}
+\epsilon_1=(1,0,1)^T,&\eta_1=(1,2,-1)^T,\\
+\epsilon_2=(2,1,0)^T,&\eta_2=(2,2,-1)^T,\\
+\epsilon_3=(1,1,1)^T,&\eta_3=(2,-1,-1)^T.
+\end{array}
+\]
+define the linear transformation as \(\mathcal A\epsilon_i=\eta_i\), \(i=1,2,3\).
+\begin{enumerate}
+\item Find the transition matrix from bases \(\epsilon_1,\epsilon_2,\epsilon_3\)
+to bases \(\eta_1,\eta_2,\eta_3\);
+\item Give the matrix representation for \(\mathcal A\) with respect to the bases
+\(\epsilon_1,\epsilon_2,\epsilon_3\);
+\item Give the matrix representation for \(\mathcal A\) with respect to the bases
+\(\eta_1,\eta_2,\eta_3\).
+\end{enumerate}
+
+\Solution
+\begin{enumerate}
+\item Write \(E=[\epsilon_1\ \epsilon_2\ \epsilon_3]\) and
+\(H=[\eta_1\ \eta_2\ \eta_3]\). Using the transition convention \(H=ET\),
+\[
+\boxed{T=E^{-1}H=\frac12\begin{bmatrix}-4&-3&3\\2&3&3\\2&1&-5\end{bmatrix}}.
+\]
+\item Since \(\mathcal A(E)=H=ET\), we have \(\boxed{[\mathcal A]_{\epsilon}=T}\).
+\item The change-of-basis formula gives
+\(\boxed{[\mathcal A]_{\eta}=T^{-1}[\mathcal A]_{\epsilon}T=T}\).
+\end{enumerate}
+
+\section{Problem 4}
+Denote by \(\R_n[\lambda]\) the set of all polynomials with real coefficients and degrees
+not exceeding \(n\). Let a linear transformation
+\(\mathcal A\in\mathcal L(\R_n[\lambda]\mapsto\R_n[\lambda])\) be defined as
+\[
+\mathcal A(f(\lambda))=\frac{d}{d\lambda}f(\lambda),\qquad f(\lambda)\in\R_n[\lambda],
+\]
+where \(\mathcal L(\cdot)\) is the set of linear transformations. When \(n=2\), compute
+\begin{enumerate}
+\item The matrix representation of \(\mathcal A\) with respect to the basis
+\(\alpha_1(\lambda)=1+\lambda+\lambda^2\), \(\alpha_2(\lambda)=1+\lambda\),
+\(\alpha_3(\lambda)=1+2\lambda\).
+\item Determine \(\mathcal N(\mathcal A)\) and \(\mathcal R(\mathcal A)\) of \(\mathcal A\).
+\end{enumerate}
+
+\Solution
+\begin{enumerate}
+\item Since \(1=2\alpha_2-\alpha_3\),
+\[
+\mathcal A\alpha_1=\alpha_3,\quad
+\mathcal A\alpha_2=2\alpha_2-\alpha_3,\quad
+\mathcal A\alpha_3=4\alpha_2-2\alpha_3.
+\]
+Placing the coordinates of these images in columns gives
+\[
+\boxed{[\mathcal A]_{\alpha}=\begin{bmatrix}0&0&0\\0&2&4\\1&-1&-2\end{bmatrix}}.
+\]
+\item A polynomial has zero derivative exactly when it is constant, and all polynomials
+in \(\R_1[\lambda]\) occur as derivatives. Therefore
+\[
+\boxed{\mathcal N(\mathcal A)=\Span\{1\}},\qquad
+\boxed{\mathcal R(\mathcal A)=\Span\{1,\lambda\}=\R_1[\lambda]}.
+\]
+Their dimensions are \(1\) and \(2\), respectively.
+\end{enumerate}
+
+\section{Problem 5}
+Let \(\mathcal A\) be a linear transformation from a four-dimensional linear space
+\(\mathcal V\) to itself, \(\alpha_1,\alpha_2,\alpha_3,\alpha_4\) be a basis of
+the linear space \(\mathcal V\), and the matrix representation of \(\mathcal A\)
+with respect to this basis is
+\[
+A=\begin{bmatrix}
+5&-2&-4&3\\3&-1&-3&2\\-3&\tfrac12&\tfrac92&-\tfrac52\\-10&3&11&-7
+\end{bmatrix}.
+\]
+\begin{enumerate}
+\item Find the matrix representation of \(\mathcal A\) with respect to the following basis
+\[
+\begin{aligned}
+\eta_1&=\alpha_1+2\alpha_2+\alpha_3+\alpha_4,\\
+\eta_2&=2\alpha_1+3\alpha_2+\alpha_3,\\
+\eta_3&=\alpha_3,\qquad \eta_4=\alpha_4.
+\end{aligned}
+\]
+\item Determine \(\mathcal N(\mathcal A)\) and \(\mathcal R(\mathcal A)\) of \(\mathcal A\).
+\end{enumerate}
+
+\Solution
+\begin{enumerate}
+\item From \([\eta_1\ \eta_2\ \eta_3\ \eta_4]=[\alpha_1\ \alpha_2\ \alpha_3\ \alpha_4]P\),
+\[
+P=\begin{bmatrix}1&2&0&0\\2&3&0&0\\1&1&1&0\\1&0&0&1\end{bmatrix},\qquad
+\boxed{[\mathcal A]_{\eta}=P^{-1}AP=
+\begin{bmatrix}0&0&6&-5\\0&0&-5&4\\0&0&\tfrac72&-\tfrac32\\0&0&5&-2\end{bmatrix}}.
+\]
+\item The first two columns vanish and the last two are independent, so both dimensions are \(2\), and
+\[
+\boxed{\mathcal N(\mathcal A)=\Span\{\eta_1,\eta_2\}},\qquad
+\boxed{\mathcal R(\mathcal A)=\Span\{r_1,r_2\}}.
+\]
+Since \(\eta_3=\alpha_3\) and \(\eta_4=\alpha_4\), we may take
+\[
+\begin{aligned}
+r_1&=\mathcal A\alpha_3=-4\alpha_1-3\alpha_2+\tfrac92\alpha_3+11\alpha_4,\\
+r_2&=\mathcal A\alpha_4=3\alpha_1+2\alpha_2-\tfrac52\alpha_3-7\alpha_4.
+\end{aligned}
+\]
+\end{enumerate}
+\end{document}

@@ -1,0 +1,127 @@
+% Chinese questions and concise solutions. Compile using XeLaTeX.
+\documentclass[UTF8,10pt,letterpaper,fontset=fandol]{ctexart}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem,needspace}
+\usepackage[unicode,hidelinks]{hyperref}
+\pagestyle{plain}
+\raggedbottom
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1pt}
+\setlength{\emergencystretch}{2em}
+\setcounter{secnumdepth}{0}
+\setlist[enumerate]{label=(\arabic*),leftmargin=2em,itemsep=0.25em,topsep=0.2em}
+\ctexset{section={format=\Large\bfseries,beforeskip=1.2ex,afterskip=0.8ex}}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Solution}{\par\Needspace{4\baselineskip}\textbf{解答}\par}
+\begin{document}
+\begin{center}
+{\LARGE 作业 5}\\[0.6em]
+2026 年 10 月 21 日\\[0.25em]
+姓名：YuanHao Tang\quad 学号：3120265621
+\end{center}
+
+\section{第 1 题}
+设
+\[
+B(\lambda)=\begin{pmatrix}\lambda^3+\lambda&\lambda^2\\\lambda^2-3\lambda&2\lambda\end{pmatrix},\qquad
+C(\lambda)=\begin{pmatrix}
+1-\lambda&\lambda^2&\lambda\\
+2\lambda-1&\lambda(1-\lambda)&-2\lambda\\
+1+\lambda^2&\lambda^2&-\lambda^2
+\end{pmatrix},
+\]
+且
+\[
+A(\lambda)=\begin{pmatrix}B(\lambda)&0\\0&C(\lambda)\end{pmatrix}.
+\]
+求：
+\begin{enumerate}
+\item $B(\lambda)$ 的 Smith 标准形；
+\item $A(\lambda)$ 的初等因子。
+\end{enumerate}
+\Solution
+在 $\C[\lambda]$ 中计算，$D_k$ 表示 $k$ 阶行列式因子。
+\begin{enumerate}
+\item $B$ 的元素均含 $\lambda$，且含元素 $2\lambda$，故 $D_1(B)=\lambda$。又
+\[
+\det B=\lambda^2(\lambda+1)(\lambda+2),
+\qquad\boxed{S_B=\operatorname{diag}\bigl(\lambda,\lambda(\lambda+1)(\lambda+2)\bigr)}.
+\]
+\item 对 $C$，计算得 $D_1=1$、$D_2=\lambda$、$D_3=\lambda^2(\lambda+1)$，所以
+\[
+S_C=\operatorname{diag}\bigl(1,\lambda,\lambda(\lambda+1)\bigr).
+\]
+分块对角矩阵的初等因子按重数合并，故 $A$ 的全部初等因子为
+\[
+\boxed{\lambda,\ \lambda,\ \lambda,\ \lambda,\ \lambda+1,\ \lambda+1,\ \lambda+2}.
+\]
+\end{enumerate}
+
+\section{第 2 题}
+定义 $D:\C[\lambda]\to\C[\lambda]$ 为
+\[
+D\!\left(\sum_{i=0}^n\alpha_i\lambda^i\right)=\sum_{i=1}^n i\alpha_i\lambda^{i-1}.
+\]
+证明 $D$ 是 $\C[\lambda]$ 上的线性变换，并求 $\ker D$。
+\Solution
+求导后仍为多项式，且对任意多项式 $f,g$ 和复数 $u,v$，有
+$D(uf+vg)=uD(f)+vD(g)$，故 $D$ 线性。$D(f)=0$ 当且仅当 $i\alpha_i=0$（$i\ge1$），即 $f$ 为常数。因此
+\[
+\boxed{\ker D=\C\cdot1=\operatorname{span}\{1\}}.
+\]
+
+\newpage
+\section{第 3 题}
+设 $\mathcal A\in L(\C_n[\lambda])$，对非零常数 $a\in\C$ 定义为
+\[
+\mathcal A[f(\lambda)]=f(\lambda+a),\qquad\forall f(\lambda)\in\C_n[\lambda].
+\]
+求：
+\begin{enumerate}
+\item $\mathcal A$ 关于基 $1,\lambda,\lambda^2,\ldots,\lambda^n$ 的矩阵表示；
+\item $\mathcal A$ 的特征值及相应特征向量。
+\end{enumerate}
+\Solution
+\begin{enumerate}
+\item 由 $(\lambda+a)^j=\sum_{i=0}^j\binom ji a^{j-i}\lambda^i$，矩阵 $M=[\mathcal A]$ 的行列从 $0$ 编号至 $n$，有
+\[
+\boxed{M_{ij}=\begin{cases}\binom ji a^{j-i},&0\le i\le j\le n,\\0,&i>j.\end{cases}}
+\]
+\item $M$ 为对角元全是 $1$ 的上三角矩阵，故唯一特征值为 $1$，代数重数为 $n+1$。
+若 $f$ 的次数 $m\ge1$、首项系数为 $c_m$，则 $f(\lambda+a)-f(\lambda)$ 的首项为 $mc_ma\lambda^{m-1}\ne0$。
+所以 $f(\lambda+a)=f(\lambda)$ 只可能对常数多项式成立。因此
+\[
+\boxed{E_1(\mathcal A)=\operatorname{span}\{1\},\qquad f(\lambda)=c\ (c\in\C\setminus\{0\})}.
+\]
+这里非零常数多项式就是全部特征向量。
+\end{enumerate}
+
+\section{第 4 题}
+设 $V=\C_n[s]$，定义 $D:\C_n[s]\to\C_n[s]$ 为
+\[
+\begin{aligned}
+D[f(s)]&=na_ns^{n-1}+(n-1)a_{n-1}s^{n-2}+\cdots+2a_2s+a_1,\\
+f(s)&=a_ns^n+a_{n-1}s^{n-1}+\cdots+a_2s^2+a_1s+a_0.
+\end{aligned}
+\]
+求：
+\begin{enumerate}
+\item $D$ 的初等因子；
+\item $D$ 的特征值及相应特征向量。
+\end{enumerate}
+\Solution
+\begin{enumerate}
+\item 在基 $(1,s,\ldots,s^n)$ 下，$N=[D]$ 只有上次对角元 $N_{j-1,j}=j$（$1\le j\le n$）非零。
+用 $\mu$ 作特征矩阵的不定元。$\mu I-N$ 的上次对角元为 $-1,-2,\ldots,-n$，故对 $1\le k\le n$，存在非零常数 $k$ 阶子式 $(-1)^k k!$，所以 $D_k=1$；又 $\det(\mu I-N)=\mu^{n+1}$。因此
+\[
+S_{\mu I-N}=\operatorname{diag}\bigl(\underbrace{1,\ldots,1}_{n},\mu^{n+1}\bigr),
+\qquad\boxed{\text{唯一初等因子为 }\mu^{n+1}}.
+\]
+\item $N$ 为严格上三角矩阵，唯一特征值为 $0$，代数重数为 $n+1$。由 $D(f)=f'=0$，得
+\[
+\boxed{E_0(D)=\operatorname{span}\{1\},\qquad f(s)=c\ (c\in\C\setminus\{0\})}.
+\]
+全部特征向量为非零常数多项式。
+\end{enumerate}
+\end{document}

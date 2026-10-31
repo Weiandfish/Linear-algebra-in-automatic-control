@@ -1,0 +1,28 @@
+Homework 2 工作空间
+
+姓名：YuanHao Tang；学号：3120265621。
+作业日期：2026 年 10 月 10 日。
+
+中文版（中文题目、中文精简解答）：
+  Homework2_题目与解答.tex
+  Homework2_题目与解答.pdf
+
+英文版（英文原题、英文精简解答）：
+  Homework2_英文题目与解答.tex
+  Homework2_英文题目与解答.pdf
+
+原始题目：Homework2_原始题目.pdf。
+两份解答都保留全部五道题及子题，按原题顺序作答。
+第 2(1) 题原文的 F 与 C^n 写法不一致，解答中说明了实数域与复数域的对应结论。
+
+编译方法：
+1. 修改并保存 .tex 文件。
+2. 双击此文件夹中的“编译PDF.cmd”。
+3. 出现 SUCCESS 表示两份 PDF 已更新；按任意键关闭窗口。
+若出现 FAILED，请查看窗口错误详情，修正源码后再次编译。
+
+脚本使用本机已安装的 XeLaTeX，处理中文路径并编译三轮；PDF 更新在同一文件夹。
+也可以打开 PowerShell，运行：
+powershell -NoProfile -ExecutionPolicy Bypass -File .\build.ps1
+
+Lecture 3 的分章中英文教学笔记在仓库根目录下的 notes\lecture03；从 00_阅读导航.md 开始阅读。

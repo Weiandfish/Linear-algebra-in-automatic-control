@@ -1,0 +1,129 @@
+% Original English questions and concise English solutions. Compile using XeLaTeX.
+\documentclass[UTF8,10pt,letterpaper,fontset=fandol]{ctexart}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem,needspace}
+\usepackage[unicode,hidelinks]{hyperref}
+\pagestyle{plain}
+\raggedbottom
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1pt}
+\setlength{\emergencystretch}{2em}
+\setcounter{secnumdepth}{0}
+\setlist[enumerate]{label=(\arabic*),leftmargin=2em,itemsep=0.25em,topsep=0.2em}
+\ctexset{section={format=\Large\bfseries,beforeskip=1.2ex,afterskip=0.8ex}}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Solution}{\par\Needspace{4\baselineskip}\textbf{Solution}\par}
+\begin{document}
+\begin{center}
+{\LARGE Homework 5}\\[0.6em]
+October 21, 2026\\[0.25em]
+Name: YuanHao Tang\quad Student ID: 3120265621
+\end{center}
+
+\section{Problem 1}
+Let
+\[
+B(\lambda)=\begin{pmatrix}\lambda^3+\lambda&\lambda^2\\\lambda^2-3\lambda&2\lambda\end{pmatrix},\qquad
+C(\lambda)=\begin{pmatrix}
+1-\lambda&\lambda^2&\lambda\\
+2\lambda-1&\lambda(1-\lambda)&-2\lambda\\
+1+\lambda^2&\lambda^2&-\lambda^2
+\end{pmatrix},
+\]
+and
+\[
+A(\lambda)=\begin{pmatrix}B(\lambda)&0\\0&C(\lambda)\end{pmatrix}.
+\]
+Find out
+\begin{enumerate}
+\item the Smith canonical form of $B(\lambda)$;
+\item the elementary divisors of $A(\lambda)$.
+\end{enumerate}
+\Solution
+Work over $\C[\lambda]$ and let $D_k$ denote the $k$th determinantal divisor.
+\begin{enumerate}
+\item Every entry of $B$ is divisible by $\lambda$, and $2\lambda$ is an entry, so $D_1(B)=\lambda$. Also
+\[
+\det B=\lambda^2(\lambda+1)(\lambda+2),
+\qquad\boxed{S_B=\operatorname{diag}\bigl(\lambda,\lambda(\lambda+1)(\lambda+2)\bigr)}.
+\]
+\item For $C$, direct calculation gives $D_1=1$, $D_2=\lambda$ and $D_3=\lambda^2(\lambda+1)$, hence
+\[
+S_C=\operatorname{diag}\bigl(1,\lambda,\lambda(\lambda+1)\bigr).
+\]
+Take the multiset union of the elementary divisors of both blocks. All elementary divisors of $A$ are
+\[
+\boxed{\lambda,\ \lambda,\ \lambda,\ \lambda,\ \lambda+1,\ \lambda+1,\ \lambda+2}.
+\]
+\end{enumerate}
+
+\section{Problem 2}
+Let $D:\C[\lambda]\to\C[\lambda]$ be defined by
+\[
+D\!\left(\sum_{i=0}^n\alpha_i\lambda^i\right)=\sum_{i=1}^n i\alpha_i\lambda^{i-1}.
+\]
+Show that $D$ is a linear transformation on $\C[\lambda]$, and determine $\ker[D]$.
+\Solution
+Differentiation maps polynomials to polynomials and satisfies
+$D(uf+vg)=uD(f)+vD(g)$ for polynomials $f,g$ and complex scalars $u,v$, so $D$ is linear.
+Moreover, $D(f)=0$ iff $i\alpha_i=0$ for every $i\ge1$, which means $f$ is constant. Thus
+\[
+\boxed{\ker D=\C\cdot1=\operatorname{span}\{1\}}.
+\]
+
+\newpage
+\section{Problem 3}
+Let $\mathcal A\in L(\C_n[\lambda])$ be defined, for a nonzero constant $a\in\C$, as
+\[
+\mathcal A[f(\lambda)]=f(\lambda+a),\qquad\forall f(\lambda)\in\C_n[\lambda].
+\]
+Find out
+\begin{enumerate}
+\item the matrix representation of $\mathcal A$ with respect to the basis $1,\lambda,\lambda^2,\ldots,\lambda^n$;
+\item the eigenvalues and the associated eigenvectors of $\mathcal A$.
+\end{enumerate}
+\Solution
+\begin{enumerate}
+\item By $(\lambda+a)^j=\sum_{i=0}^j\binom ji a^{j-i}\lambda^i$, the matrix $M=[\mathcal A]$, with rows and columns indexed from $0$ to $n$, is
+\[
+\boxed{M_{ij}=\begin{cases}\binom ji a^{j-i},&0\le i\le j\le n,\\0,&i>j.\end{cases}}
+\]
+\item $M$ is upper triangular with all diagonal entries one, so its only eigenvalue is $1$, of algebraic multiplicity $n+1$.
+If $f$ has degree $m\ge1$ and leading coefficient $c_m$, then $f(\lambda+a)-f(\lambda)$ has nonzero leading term $mc_ma\lambda^{m-1}$.
+Thus only constant polynomials satisfy $f(\lambda+a)=f(\lambda)$, and
+\[
+\boxed{E_1(\mathcal A)=\operatorname{span}\{1\},\qquad f(\lambda)=c\ (c\in\C\setminus\{0\})}.
+\]
+The nonzero constant polynomials are precisely all associated eigenvectors.
+\end{enumerate}
+
+\section{Problem 4}
+Let $V=\C_n[s]$ and $D:\C_n[s]\to\C_n[s]$ be defined by
+\[
+\begin{aligned}
+D[f(s)]&=na_ns^{n-1}+(n-1)a_{n-1}s^{n-2}+\cdots+2a_2s+a_1,\\
+f(s)&=a_ns^n+a_{n-1}s^{n-1}+\cdots+a_2s^2+a_1s+a_0.
+\end{aligned}
+\]
+Find out
+\begin{enumerate}
+\item the elementary divisors of $D$;
+\item the eigenvalues and the associated eigenvectors of $D$.
+\end{enumerate}
+\Solution
+\begin{enumerate}
+\item In the basis $(1,s,\ldots,s^n)$, $N=[D]$ has nonzero entries only at $N_{j-1,j}=j$ for $1\le j\le n$.
+Use $\mu$ as the characteristic-matrix indeterminate. The superdiagonal of $\mu I-N$ is $-1,-2,\ldots,-n$.
+For each $1\le k\le n$ there is a nonzero constant minor $(-1)^k k!$, so $D_k=1$; also $\det(\mu I-N)=\mu^{n+1}$. Hence
+\[
+S_{\mu I-N}=\operatorname{diag}\bigl(\underbrace{1,\ldots,1}_{n},\mu^{n+1}\bigr),
+\qquad\boxed{\text{the sole elementary divisor is }\mu^{n+1}}.
+\]
+\item $N$ is strictly upper triangular, so its only eigenvalue is $0$, of algebraic multiplicity $n+1$. Since $D(f)=f'=0$ exactly for constant polynomials,
+\[
+\boxed{E_0(D)=\operatorname{span}\{1\},\qquad f(s)=c\ (c\in\C\setminus\{0\})}.
+\]
+All associated eigenvectors are the nonzero constant polynomials.
+\end{enumerate}
+\end{document}

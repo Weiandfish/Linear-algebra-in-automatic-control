@@ -1,0 +1,19 @@
+Homework 7 工作空间
+
+姓名：YuanHao Tang；学号：3120265621。
+作业日期：2026 年 10 月 28 日。
+
+中文版：Homework7_题目与解答.tex / Homework7_题目与解答.pdf
+英文版：Homework7_英文题目与解答.tex / Homework7_英文题目与解答.pdf
+原始题目：Homework7_原始题目.pdf
+
+两版保留四道题与全部子题。中文版翻译题目并作答，英文版保留英文原题并作答。
+平移算子的矩阵以原单项式基为准，构造换基矩阵时把多项式变量暂记为 s。
+第 3 题总维数为 10，第 4 题总维数为 11，请区分两组初等因子。
+
+重新编译：保存 .tex 后，双击“编译PDF.cmd”。出现 SUCCESS 即表示两份 PDF 已更新。
+如需命令行编译，在本目录运行：
+powershell -NoProfile -ExecutionPolicy Bypass -File .\build.ps1
+
+脚本使用 XeLaTeX，通过英文临时路径处理中文文件名。
+本次讲义笔记位于 notes\lecture08；原讲义文件名为第 8 讲，封面标为 Lecture 9，导航已注明。

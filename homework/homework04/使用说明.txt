@@ -1,0 +1,24 @@
+Homework 4 工作空间
+
+姓名：YuanHao Tang；学号：3120265621。
+作业日期：2026 年 10 月 16 日。
+
+中文版：Homework4_题目与解答.tex / Homework4_题目与解答.pdf
+英文版：Homework4_英文题目与解答.tex / Homework4_英文题目与解答.pdf
+原始题目：Homework4_原始题目.pdf
+
+中文版翻译题目并用中文作答；英文版保留英文题目并用英文作答。
+两版均保留全部四道题和矩阵，仅添加必要解答步骤。
+第 4 题保留一般域的表述，并说明特征为 3 的特殊情形。
+
+重新编译：
+1. 修改并保存 .tex。
+2. 双击“编译PDF.cmd”。
+3. 出现 SUCCESS 即表示两份 PDF 已更新；按任意键关闭窗口。
+若出现 FAILED，请查看错误详情，修正源文件后重试。
+
+也可在此文件夹的 PowerShell 中运行：
+powershell -NoProfile -ExecutionPolicy Bypass -File .\build.ps1
+
+脚本使用本机 XeLaTeX，并通过英文临时路径处理中文文件名。
+第五讲双语笔记位于 notes\lecture05，从 00_阅读导航.md 开始。

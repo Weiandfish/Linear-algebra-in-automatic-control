@@ -1,0 +1,135 @@
+% Original English questions and concise English solutions. Compile using XeLaTeX.
+\documentclass[UTF8,10pt,letterpaper,fontset=fandol]{ctexart}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem,needspace}
+\usepackage[unicode,hidelinks]{hyperref}
+\pagestyle{plain}
+\raggedbottom
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1pt}
+\setlength{\emergencystretch}{2em}
+\linespread{1.1}
+\AtBeginDocument{%
+\setlength{\abovedisplayskip}{6pt}%
+\setlength{\belowdisplayskip}{6pt}%
+\setlength{\abovedisplayshortskip}{3pt}%
+\setlength{\belowdisplayshortskip}{3pt}}
+\setcounter{secnumdepth}{0}
+\setlist[enumerate]{label=(\arabic*),leftmargin=2em,itemsep=0.25em,topsep=0.2em}
+\ctexset{section={format=\Large\bfseries,beforeskip=1.2ex,afterskip=0.8ex}}
+\newcommand{\Solution}{\par\Needspace{4\baselineskip}\textbf{Solution}\par}
+\begin{document}
+\begin{center}
+{\LARGE Homework 6}\\[0.6em]
+October 23, 2026\\[0.25em]
+Name: YuanHao Tang\quad Student ID: 3120265621
+\end{center}
+
+\section{Problem 1}
+Let $\mathcal A$ be a linear transformation from a four dimensional linear space $\mathcal V$ to itself,
+$\alpha_1,\alpha_2,\alpha_3,\alpha_4$ be a basis of the linear space $\mathcal V$, and the matrix representation of $\mathcal A$ with respect to this basis be
+\[
+A=\begin{pmatrix}2&0&2&1\\6&1&4&4\\10&0&0&4\\7&0&-7&2\end{pmatrix}.
+\]
+Find out
+\begin{enumerate}
+\item the eigenvalues and eigenvectors of matrix $A$;
+\item the eigenvalues and associated eigenvectors of $\mathcal A$.
+\end{enumerate}
+\Solution
+\begin{enumerate}
+\item The characteristic polynomial is $\det(\lambda I-A)=(\lambda-1)^3(\lambda-2)$.
+Both $A-I$ and $A-2I$ have rank three. All eigenvectors for eigenvalues $1,2$, respectively, are
+\[
+\boxed{x_1=c(0,1,0,0)^T,\qquad x_2=c(1,2,1,-2)^T,\qquad c\ne0.}
+\]
+\item The eigenvalues are again $1,2$. Converting coordinates to vectors in the original space, all associated eigenvectors are
+\[
+\boxed{v_1=c\alpha_2,\qquad v_2=c(\alpha_1+2\alpha_2+\alpha_3-2\alpha_4),\qquad c\ne0.}
+\]
+\end{enumerate}
+
+\section{Problem 2}
+Let
+\[
+A=\begin{pmatrix}4&6&0\\-3&-5&0\\-3&-6&1\end{pmatrix}.
+\]
+Find out the invariant polynomials of $A$, the natural normal form $N$ of $A$, and the Jordan canonical forms of $A$ (the complex case and the real case, respectively).
+\Solution
+For $\lambda I-A$, $D_1=1$. Since $\operatorname{rank}(A-I)=1$, every second-order minor contains $\lambda-1$, and one is $-6(\lambda-1)$, so $D_2=\lambda-1$.
+Also $D_3=\det(\lambda I-A)=(\lambda-1)^2(\lambda+2)$. Hence the invariant polynomials are
+\[
+\boxed{d_1=1,\qquad d_2=\lambda-1,\qquad d_3=(\lambda-1)(\lambda+2)}.
+\]
+Discard the unit entry and form column companion blocks for the nonconstant entries:
+\[
+\boxed{N=\begin{pmatrix}1&0&0\\0&0&2\\0&1&-1\end{pmatrix}}.
+\]
+The eigenvalue $1$ has geometric multiplicity two, while $-2$ is a simple root. Thus both Jordan forms are
+\[
+\boxed{J_{\mathrm{complex}}=J_{\mathrm{real}}=\operatorname{diag}(1,1,-2)}.
+\]
+
+\newpage
+\section{Problem 3}
+Let $A$ be a matrix whose elementary divisors are
+\[
+\begin{gathered}
+(\lambda+1),\quad(\lambda+1)^2,\quad(\lambda+1+j),\quad(\lambda+1-j),\\
+(\lambda+1)^2,\quad(\lambda+1+j)^2,\quad(\lambda+1-j)^2.
+\end{gathered}
+\]
+Find out
+\begin{enumerate}
+\item the Smith canonical form $S$ of the eigenmatrix $\lambda E-A$;
+\item the natural normal form $N$, the complex Jordan canonical form $J_{\mathrm{complex}}$ and the real Jordan canonical form $J_{\mathrm{real}}$ of $A$.
+\end{enumerate}
+\Solution
+Put $j^2=-1$, $x=\lambda+1$ and $q=x^2+1$. The elementary divisors have total degree eleven.
+\begin{enumerate}
+\item Sort the exponents for each root, padding with zeros on the left to length three:
+\[
+\begin{array}{c|ccc}
+\text{Root}&1&2&3\\\hline
+-1&1&2&2\\
+-1-j&0&1&2\\
+-1+j&0&1&2
+\end{array}
+\]
+The nonconstant invariant polynomials are $\psi_1=x$, $\psi_2=x^2q$ and $\psi_3=x^2q^2$. Thus
+\[
+\boxed{S=\operatorname{diag}(I_8,\psi_1,\psi_2,\psi_3)}.
+\]
+\item For monic $p=\lambda^m+c_{m-1}\lambda^{m-1}+\cdots+c_0$, let $C(p)$ be its column companion matrix: ones on the subdiagonal, last column $-(c_0,\ldots,c_{m-1})^T$, and zeros elsewhere. Then
+\[
+\boxed{N=\operatorname{diag}\bigl(-1,C(\psi_2),C(\psi_3)\bigr)},
+\]
+where
+\[
+\begin{aligned}
+\psi_2&=\lambda^4+4\lambda^3+7\lambda^2+6\lambda+2,\\
+\psi_3&=\lambda^6+6\lambda^5+17\lambda^4+28\lambda^3+28\lambda^2+16\lambda+4.
+\end{aligned}
+\]
+Define
+\[
+J_2(\rho)=\begin{pmatrix}\rho&1\\0&\rho\end{pmatrix},\qquad
+K_\pm=\operatorname{diag}\bigl(-1\pm j,J_2(-1\pm j)\bigr).
+\]
+Each elementary divisor gives one Jordan block, so
+\[
+\boxed{J_{\mathrm{complex}}=\operatorname{diag}\bigl(-1,J_2(-1),J_2(-1),K_-,K_+\bigr)}.
+\]
+For the real form, pair conjugate blocks. Put
+\[
+R=\begin{pmatrix}-1&1\\-1&-1\end{pmatrix},\qquad
+R_2=\begin{pmatrix}R&I_2\\0&R\end{pmatrix}.
+\]
+Then
+\[
+\boxed{J_{\mathrm{real}}=\operatorname{diag}\bigl(-1,J_2(-1),J_2(-1),R,R_2\bigr)}.
+\]
+All these forms are $11\times11$; Jordan blocks may be reordered.
+\end{enumerate}
+\end{document}
