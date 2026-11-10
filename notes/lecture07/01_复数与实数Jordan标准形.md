@@ -85,6 +85,16 @@ $$
 
 **English:** The matrix is diagonalizable over the complex field exactly when all blocks have order one. Algebraic multiplicity alone does not determine block lengths; elementary divisors or kernel information are needed.
 
+<!-- diagram:25_jordan_blocks:start -->
+
+**图解 · 若尔当色块：块的大小与块的个数是两件事**
+
+![若尔当色块：块的大小与块的个数是两件事](../../assets/diagrams/25_jordan_blocks.png)
+
+**读图：** 这是同一个根有三阶、二阶两块的五维例子。总格数给代数重数 5，块数给几何重数 2，最长块给最小多项式指数 3；三个数字各自回答不同问题。
+
+<!-- diagram:25_jordan_blocks:end -->
+
 ## 四、实 Jordan 形：把共轭块配成实块 / Pairing conjugate blocks over the reals
 
 **中文：** 对实矩阵，非实特征值 $a+bi$、$a-bi$（$b>0$）的 Jordan 块必须按相同大小配对。定义
@@ -117,6 +127,16 @@ $$
 **中文：** 它对应的复初等因子是 $(\lambda+1-i)^2$ 与 $(\lambda+1+i)^2$，对应的实不可约因子幂为 $((\lambda+1)^2+1)^2$。
 
 **English:** Its complex elementary divisors are $(\lambda+1-i)^2$ and $(\lambda+1+i)^2$. Over the reals the corresponding irreducible power is $((\lambda+1)^2+1)^2$.
+
+<!-- diagram:26_real_jordan:start -->
+
+**图解 · 一对共轭复块，配成一个维数翻倍的实块**
+
+![一对共轭复块，配成一个维数翻倍的实块](../../assets/diagrams/26_real_jordan.png)
+
+**读图：** 二阶块与它的共轭块配对，用复链向量的实部、虚部作新基，就得到四阶实块。对角的两个二维块负责共轭根，橙色的单位块负责链之间的接力。
+
+<!-- diagram:26_real_jordan:end -->
 
 ## 五、作业例题：三阶矩阵的全部标准形 / Homework example: all forms of a three-by-three matrix
 

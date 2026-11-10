@@ -92,6 +92,16 @@ $$
 
 **English:** Every step is an invertible polynomial elementary operation. The final entries are monic and satisfy divisibility.
 
+<!-- diagram:19_smith_steps:start -->
+
+**图解 · 史密斯化简：把可逆行列操作画成四帧**
+
+![史密斯化简：把可逆行列操作画成四帧](../../assets/diagrams/19_smith_steps.png)
+
+**读图：** 四帧保留每一步合法操作：交换列、消掉左下角、消掉右上角、再首一化。最终不是随便一个对角矩阵，还要求对角元组成整除链。
+
+<!-- diagram:19_smith_steps:end -->
+
 ## 四、用行列式因子计算，不必找出左右矩阵 / Compute using determinantal divisors
 
 **中文：** 对 $1\le k\le r$，定义 $D_k$ 为全部非零 $k$ 阶子式的首一最大公因式；把零子式也放进最大公因式计算不改变结果。另设 $D_0=1$、$k>r$ 时 $D_k=0$。
@@ -137,6 +147,16 @@ $$
 (d_1,d_2,d_3)=(1,\lambda,\lambda(\lambda+1)),\qquad
 S_A=\operatorname{diag}(1,\lambda,\lambda(\lambda+1)).
 $$
+
+<!-- diagram:20_determinantal_divisors:start -->
+
+**图解 · 行列式因子是累计乘积，不变多项式是相邻之商**
+
+![行列式因子是累计乘积，不变多项式是相邻之商](../../assets/diagrams/20_determinantal_divisors.png)
+
+**读图：** 上排是单个不变多项式，下排是从第一项累计乘到当前位置的行列式因子。反方向用相邻两个累计结果相除，就取回单项：$d_k=D_k/D_{k-1}$。
+
+<!-- diagram:20_determinantal_divisors:end -->
 
 ## 五、结构化矩阵：优先找常数子式 / Structured matrices: seek constant minors
 

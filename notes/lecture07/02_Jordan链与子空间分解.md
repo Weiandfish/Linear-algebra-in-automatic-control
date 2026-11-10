@@ -50,6 +50,16 @@ $$
 
 **English:** Verify both $AX=XJ$ and invertibility of $X$. The intertwining equation alone does not establish similarity.
 
+<!-- diagram:27_jordan_chain:start -->
+
+**图解 · 若尔当链：作用方向与基向量排列方向相反**
+
+![若尔当链：作用方向与基向量排列方向相反](../../assets/diagrams/27_jordan_chain.png)
+
+**读图：** N 每作用一次就把链尾向链头推近一步，而换基矩阵的列按链头到链尾排列。这一反向关系解释了为什么若尔当块中的 1 位于超对角线。
+
+<!-- diagram:27_jordan_chain:end -->
+
 ## 三、如何实际寻找链 / How to find chains
 
 1. **中文：** 先由初等因子确定各根的块数与块长，从长链开始。
@@ -169,5 +179,15 @@ $$
 $$
 
 **教学补充例题 / Teaching supplement：** 若 $h_1,h_2,h_3,h_4=2,4,5,5$，增量为 $2,2,1,0$，所以有两个块，大小分别为 $3,2$。 / Nullities $2,4,5,5$ give increments $2,2,1,0$, hence two blocks of sizes three and two.
+
+<!-- diagram:28_nullity_staircase:start -->
+
+**图解 · 核维数的台阶，能反推出每一条链有多长**
+
+![核维数的台阶，能反推出每一条链有多长](../../assets/diagrams/28_nullity_staircase.png)
+
+**读图：** 第 k 次幂会杀掉每条链前 k 格，所以核维数依次为 2、4、5、5。新增的 2、2、1、0 格就是长度至少为 k 的块数，从而读出块长为 3 和 2。
+
+<!-- diagram:28_nullity_staircase:end -->
 
 [阅读导航 / Guide](00_阅读导航.md) · [上一章 / Previous](01_复数与实数Jordan标准形.md) · [练习速查 / Exercises](03_练习与公式速查.md)
