@@ -1,0 +1,217 @@
+\documentclass[UTF8,10pt,letterpaper,fontset=fandol]{ctexart}
+\usepackage[margin=0.9in]{geometry}
+\usepackage{amsmath,amssymb,enumitem,needspace}
+\usepackage[unicode,hidelinks]{hyperref}
+\pagestyle{plain}
+\raggedbottom
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1pt}
+\setlength{\emergencystretch}{2em}
+\linespread{1.06}
+\AtBeginDocument{\setlength{\abovedisplayskip}{5pt}\setlength{\belowdisplayskip}{5pt}\setlength{\abovedisplayshortskip}{3pt}\setlength{\belowdisplayshortskip}{3pt}}
+\setcounter{secnumdepth}{0}
+\setlist[enumerate]{label=(\arabic*),leftmargin=2em,itemsep=0.2em,topsep=0.2em}
+\ctexset{section={format=\Large\bfseries,beforeskip=1.1ex,afterskip=0.7ex}}
+\newcommand{\C}{\mathbb C}
+\newcommand{\R}{\mathbb R}
+\newcommand{\F}{\mathbb F}
+\newcommand{\ip}[2]{\langle #1,#2\rangle}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\im}{im}
+\begin{document}
+\begin{center}
+{\LARGE Homework 10}\\[0.5em]
+November 6, 2026\\[0.25em]
+Name: YuanHao Tang\quad Student ID: 3120265621
+\end{center}
+\section{Problem 1}
+Prove Theorem 4.24: self-adjoint, skew-self-adjoint and unitary transformations are all normal.
+\par\Needspace{4\baselineskip}\textbf{Solution}\par
+
+\begin{align*}
+ \mathcal A^*=\mathcal A&\Longrightarrow
+ \mathcal A\mathcal A^*=\mathcal A^2=\mathcal A^*\mathcal A,\\
+ \mathcal A^*=-\mathcal A&\Longrightarrow
+ \mathcal A\mathcal A^*=-\mathcal A^2=\mathcal A^*\mathcal A,\\
+ \mathcal U\text{ unitary}&\Longrightarrow
+ \ip{\mathcal Ux}{\mathcal Uy}=\ip xy
+ \Longrightarrow \mathcal U^*\mathcal U=I.
+\end{align*}
+\[
+ \mathcal U^{-1}=\mathcal U^*,\qquad
+ \mathcal U\mathcal U^*=I=\mathcal U^*\mathcal U.
+\]
+Theorem 4.23 gives normality in all three cases.
+\section{Problem 2}
+Prove Theorem 4.25: $A\in\C^{n\times n}$ is normal if and only if $U^*AU=\operatorname{diag}(\lambda_1,\ldots,\lambda_n)$ for a unitary $U$, where the $\lambda_i$ are the eigenvalues of $A$.
+\par\Needspace{4\baselineskip}\textbf{Solution}\par
+By the course definition, normality means having an orthonormal eigenbasis.
+\begin{align*}
+ Au_j=\lambda_ju_j,\quad u_i^*u_j=\delta_{ij}
+ &\Longrightarrow U=[u_1\ \cdots\ u_n],\quad U^*U=I,\\
+ AU=U\Lambda&\Longrightarrow U^*AU=\Lambda.
+\end{align*}
+\[
+ U^*AU=\Lambda,\ U^*U=I
+ \Longrightarrow AU=U\Lambda
+ \Longrightarrow Au_j=\lambda_ju_j,\quad u_i^*u_j=\delta_{ij}.
+\]
+\section{Problem 3}
+Prove Theorem 4.27: for $A=(a_{ij})\in\C^{n\times n}$ with eigenvalues $\lambda_1,\ldots,\lambda_n$ counted with multiplicity, $\sum_i|\lambda_i|^2\le\sum_{i,j}|a_{ij}|^2$, with equality if and only if $A$ is normal.
+\par\Needspace{4\baselineskip}\textbf{Solution}\par
+By Schur triangularization, choose unitary $Q$ such that $T=Q^*AQ$ is upper triangular and $t_{ii}=\lambda_i$.
+\begin{align*}
+ \sum_{i,j}|a_{ij}|^2
+ &=\tr(A^*A)=\tr(Q^*A^*A Q)=\tr(T^*T)\\
+ &=\sum_i|\lambda_i|^2+\sum_{i<j}|t_{ij}|^2
+ \ge\sum_i|\lambda_i|^2.
+\end{align*}
+\[
+ \text{Equality}\iff t_{ij}=0\ (i<j)
+ \iff T\text{ is diagonal}\Longrightarrow A\text{ normal}.
+\]
+Conversely, normality permits $T=\Lambda$ by Problem 2, giving equality.
+\newpage
+\section{Problem 4}
+Find a unitary $W$ such that $W^*AW$ is upper triangular for
+\[
+ A=\begin{pmatrix}1&1&1\\-1&1&1\\-1&-1&1\end{pmatrix}.
+\]
+
+\par\Needspace{4\baselineskip}\textbf{Solution}\par
+
+\[
+ K=A-I,\quad
+ v_0=\frac1{\sqrt3}\begin{pmatrix}1\\-1\\1\end{pmatrix},\quad
+ u=\frac1{\sqrt2}\begin{pmatrix}1\\0\\-1\end{pmatrix},\quad
+ v=\frac1{\sqrt6}\begin{pmatrix}1\\2\\1\end{pmatrix}.
+\]
+\[
+ [v_0\ u\ v]^*[v_0\ u\ v]=I,\qquad
+ Kv_0=0,\quad Ku=-\sqrt3v,\quad Kv=\sqrt3u.
+\]
+\[
+ z_+=\frac{u+iv}{\sqrt2},\quad z_-=\frac{u-iv}{\sqrt2},\qquad
+ Kz_\pm=\pm i\sqrt3z_\pm,\quad z_+^*z_-=0,\quad\|z_\pm\|=1.
+\]
+\[
+ \boxed{W=[v_0\ z_+\ z_-]=
+ \begin{pmatrix}
+ 1/\sqrt3&(\sqrt3+i)/\sqrt{12}&(\sqrt3-i)/\sqrt{12}\\
+ -1/\sqrt3&2i/\sqrt{12}&-2i/\sqrt{12}\\
+ 1/\sqrt3&(-\sqrt3+i)/\sqrt{12}&(-\sqrt3-i)/\sqrt{12}
+ \end{pmatrix}}.
+\]
+\[
+ W^*W=I,\qquad
+ \boxed{W^*AW=\operatorname{diag}(1,1+i\sqrt3,1-i\sqrt3)}.
+\]
+\section{Problem 5}
+Prove Theorem 4.28 directly from the definition: $A$ is normal if and only if $AA^*=A^*A$. Do not quote any other theorem or fact.
+\par\Needspace{4\baselineskip}\textbf{Solution}\par
+
+\textbf{$(\Rightarrow)$}
+Take an orthonormal eigenbasis $u_1,\ldots,u_n$ from the definition, with $Au_j=\lambda_ju_j$.
+\[
+ u_i^*A^*u_j=(Au_i)^*u_j=\bar\lambda_i\delta_{ij}
+ \Longrightarrow A^*u_j=\bar\lambda_ju_j.
+\]
+\[
+ AA^*u_j=|\lambda_j|^2u_j=A^*Au_j\quad(1\le j\le n)
+ \Longrightarrow AA^*=A^*A.
+\]
+\textbf{$(\Leftarrow)$}
+Induct on the order. The case $n=1$ is immediate. For $n>1$, take a root $\mu$ of $\det(zI-A)$ and a unit $u\in\ker(A-\mu I)$; put $B=A-\mu I$.
+\[
+ BB^*=B^*B,\quad Bu=0,\qquad
+ \|B^*u\|^2=u^*BB^*u=u^*B^*Bu=0
+ \Longrightarrow A^*u=\bar\mu u.
+\]
+\[
+ u^*x=0\Longrightarrow
+ u^*Ax=(A^*u)^*x=\mu u^*x=0,\qquad
+ u^*A^*x=(Au)^*x=\bar\mu u^*x=0.
+\]
+Thus $u^\perp$ is invariant under both $A$ and $A^*$; the restrictions still commute.
+\[
+ V=[u\ Q],\quad V^*V=I,\quad V^*AV=\begin{pmatrix}\mu&0\\0&C\end{pmatrix},\quad
+ V^*A^*V=\begin{pmatrix}\bar\mu&0\\0&C^*\end{pmatrix}
+ \Longrightarrow CC^*=C^*C.
+\]
+ Induction gives an orthonormal eigenbasis $u_2,\ldots,u_n$ on $u^\perp$. Together with $u$, it is an orthonormal eigenbasis of $A$, so $A$ is normal.
+\newpage
+\section{Problem 6}
+Prove Theorem 4.29: for $A\in\C_n^{n\times n}$ (that is, $\rank A=n$), there is a unique factorization $A=UR$, where $U$ is unitary and $R$ is upper triangular with positive diagonal entries.
+\par\Needspace{4\baselineskip}\textbf{Solution}\par
+
+\textbf{Existence.}
+\[
+ A=[a_1\ \cdots\ a_n],\qquad
+ v_j=a_j-\sum_{i=1}^{j-1}u_i(u_i^*a_j),\qquad
+ r_{jj}=\|v_j\|>0,\quad u_j=\frac{v_j}{r_{jj}}.
+\]
+\[
+ r_{ij}=u_i^*a_j\ (i<j),\quad r_{ij}=0\ (i>j),\qquad
+ u_i^*v_j=u_i^*a_j-\sum_{k<j}\delta_{ik}u_k^*a_j=0\ (i<j).
+\]
+Independence of the columns ensures $v_j\ne0$. Hence
+\[
+ u_i^*u_j=\delta_{ij},\qquad
+ a_j=\sum_{i=1}^ju_ir_{ij}\quad\Longrightarrow\quad
+ \boxed{A=UR,\quad U^*U=I,\quad r_{jj}>0}.
+\]
+\textbf{Uniqueness.}
+\[
+ A=U_1R_1=U_2R_2\quad\Longrightarrow\quad
+ M=U_2^*U_1=R_2R_1^{-1},\qquad M^*M=I.
+\]
+$M$ is upper triangular, with $m_{jj}=(R_2)_{jj}/(R_1)_{jj}>0$. Its first column and column orthogonality give
+\[
+ |m_{11}|^2=1\Longrightarrow m_{11}=1,\qquad
+ \bar m_{11}m_{1j}=0\Longrightarrow m_{1j}=0\ (j>1).
+\]
+Repeat on the trailing principal block:
+\[
+ M=I\quad\Longrightarrow\quad U_1=U_2,\qquad R_1=R_2.
+\]
+\section{Problem 7}
+Prove Theorem 4.30(1): a normal matrix $A$ is Hermitian if and only if all its eigenvalues are real.
+\par\Needspace{4\baselineskip}\textbf{Solution}\par
+
+\[
+ A=U\Lambda U^*,\qquad A^*=U\bar\Lambda U^*.
+\]
+\[
+ \boxed{A=A^*\iff\Lambda=\bar\Lambda
+ \iff\lambda_j=\bar\lambda_j\ (\forall j)\iff\lambda_j\in\R\ (\forall j)}.
+\]
+\section{Problem 8}
+Prove Theorem 4.31(1): $A\in\C^{n\times n}$ is Hermitian if and only if $x^*Ax\in\R$ for every $x\in\C^n$.
+\par\Needspace{4\baselineskip}\textbf{Solution}\par
+
+\textbf{$(\Rightarrow)$}\quad
+ $\overline{x^*Ax}=x^*A^*x=x^*Ax\Longrightarrow x^*Ax\in\R$.
+
+\textbf{$(\Leftarrow)$}\quad
+ $H=A-A^*$:\quad
+ $x^*Hx=x^*Ax-\overline{x^*Ax}=0$.
+\begin{align*}
+ x=e_i&\Longrightarrow h_{ii}=0,\\
+ x=e_i+e_j&\Longrightarrow h_{ij}+h_{ji}=0,\\
+ x=e_i+ie_j&\Longrightarrow ih_{ij}-ih_{ji}=0.
+\end{align*}
+\[
+ h_{ij}=h_{ji}=0\quad(\forall i,j)\quad\Longrightarrow\quad H=0
+ \quad\Longrightarrow\quad\boxed{A=A^*}.
+\]
+\section{Problem 9}
+For Hermitian $A$ and $B$, prove that $AB$ is Hermitian if and only if $AB=BA$ (Property 5 on textbook page 168).
+\par\Needspace{4\baselineskip}\textbf{Solution}\par
+
+\[
+ (AB)^*=B^*A^*=BA
+ \quad\Longrightarrow\quad
+ \boxed{AB\text{ is Hermitian}\iff AB=(AB)^*\iff AB=BA}.
+\]
+\end{document}

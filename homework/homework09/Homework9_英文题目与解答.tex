@@ -1,0 +1,220 @@
+\documentclass[UTF8,10pt,letterpaper,fontset=fandol]{ctexart}
+\usepackage[margin=0.9in]{geometry}
+\usepackage{amsmath,amssymb,enumitem,needspace}
+\usepackage[unicode,hidelinks]{hyperref}
+\pagestyle{plain}
+\raggedbottom
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1pt}
+\setlength{\emergencystretch}{2em}
+\linespread{1.06}
+\AtBeginDocument{\setlength{\abovedisplayskip}{5pt}\setlength{\belowdisplayskip}{5pt}\setlength{\abovedisplayshortskip}{3pt}\setlength{\belowdisplayshortskip}{3pt}}
+\setcounter{secnumdepth}{0}
+\setlist[enumerate]{label=(\arabic*),leftmargin=2em,itemsep=0.2em,topsep=0.2em}
+\ctexset{section={format=\Large\bfseries,beforeskip=1.1ex,afterskip=0.7ex}}
+\newcommand{\C}{\mathbb C}
+\newcommand{\R}{\mathbb R}
+\newcommand{\F}{\mathbb F}
+\newcommand{\ip}[2]{\langle #1,#2\rangle}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\im}{im}
+\begin{document}
+\begin{center}
+{\LARGE Homework 9}\\[0.5em]
+November 4, 2026\\[0.25em]
+Name: YuanHao Tang\quad Student ID: 3120265621
+\end{center}
+\section{Problem 1}
+Let $\mathcal A\in L(\C_n[\lambda])$ be defined by $\mathcal A f(\lambda)=f(\lambda+a)$, $a\ne0$. Using its matrix $A$ in the basis $1,\lambda,\ldots,\lambda^n$ from Homework 5, Problem 3, find the minimal polynomial of $A$.
+\par\Needspace{4\baselineskip}\textbf{Solution}\par
+\[
+ A_{ij}=\begin{cases}\binom ji a^{j-i},&0\le i\le j\le n,\\0,&i>j,\end{cases}
+ \qquad \Delta=\mathcal A-I.
+\]
+\[
+ \Delta(\lambda^k)=(\lambda+a)^k-\lambda^k
+ =ka\lambda^{k-1}+\text{lower-degree terms},\qquad k\ge1.
+\]
+\[
+ \Delta^{n+1}=0,\qquad \Delta^n(\lambda^n)=n!a^n\ne0
+ \quad\Longrightarrow\quad (A-I)^{n+1}=0,\quad(A-I)^n\ne0.
+\]
+\[
+ \boxed{m_A(z)=(z-1)^{n+1}}.
+\]
+\section{Problem 2}
+In a unitary space $V$, let $\|\alpha\|=\sqrt{\ip\alpha\alpha}$. Prove (1) the triangle inequality and (2) the Cauchy--Schwarz inequality (Theorem 4.3).
+\par\Needspace{4\baselineskip}\textbf{Solution}\par
+Use the course convention: conjugate linearity in the first slot and linearity in the second. Prove (2) first.
+\[
+ \beta=0\ \Longrightarrow\ |\ip\alpha\beta|=0.
+\]
+For $\beta\ne0$, set $c=\ip\beta\alpha/\|\beta\|^2$. Then
+\begin{align*}
+ 0&\le\|\alpha-c\beta\|^2\\
+  &=\|\alpha\|^2-c\ip\alpha\beta-\bar c\ip\beta\alpha+|c|^2\|\beta\|^2\\
+  &=\|\alpha\|^2-\frac{|\ip\alpha\beta|^2}{\|\beta\|^2}.
+\end{align*}
+\[
+ \boxed{|\ip\alpha\beta|\le\|\alpha\|\,\|\beta\|}.
+\]
+\textbf{(1)}
+\begin{align*}
+ \|\alpha+\beta\|^2
+ &=\|\alpha\|^2+2\operatorname{Re}\ip\alpha\beta+\|\beta\|^2\\
+ &\le\|\alpha\|^2+2|\ip\alpha\beta|+\|\beta\|^2
+ \le(\|\alpha\|+\|\beta\|)^2.
+\end{align*}
+\[
+ \boxed{\|\alpha+\beta\|\le\|\alpha\|+\|\beta\|}.
+\]
+\newpage
+\section{Problem 3}
+Let $V=\R_n[\lambda]$ and $\ip pq=\int_{-1}^1p(\lambda)q(\lambda)\,d\lambda$. (1) Prove this is an inner product. (2) Find the Gramian of $1,\lambda,\ldots,\lambda^n$. (3) Apply Gram--Schmidt to obtain an orthonormal basis $\alpha_kL_k(\lambda)$, $0\le k\le n$.
+\par\Needspace{4\baselineskip}\textbf{Solution}\par
+\textbf{(1)}
+\[
+ \ip pq=\ip qp,\qquad
+ \ip{ap+bq}r=a\ip pr+b\ip qr\quad(a,b\in\R),
+\]
+\[
+ \ip pp=\int_{-1}^1p^2\,d\lambda\ge0,\qquad
+ \int_{-1}^1p^2\,d\lambda=0\ \Longrightarrow\ p|_{[-1,1]}=0\ \Longrightarrow\ p=0.
+\]
+\textbf{(2)}
+\[
+ \boxed{G=(g_{ij})_{i,j=0}^n,\qquad
+ g_{ij}=\int_{-1}^1\lambda^{i+j}\,d\lambda
+ =\begin{cases}\dfrac{2}{i+j+1},&i+j\text{ even},\\[3pt]0,&i+j\text{ odd} .\end{cases}}
+\]
+\textbf{(3)}
+\[
+ q_0=1,\qquad
+ q_k=\lambda^k-\sum_{j=0}^{k-1}\frac{\ip{q_j}{\lambda^k}}{\ip{q_j}{q_j}}q_j,\qquad
+ e_k=\frac{q_k}{\|q_k\|}.
+\]
+\begin{align*}
+ q_1&=\lambda,\qquad
+ q_2=\lambda^2-\frac{2/3}{2}=\lambda^2-\frac13,\\
+ q_3&=\lambda^3-\frac{2/5}{2/3}\lambda=\lambda^3-\frac35\lambda.
+\end{align*}
+Use the standard Legendre normalization $L_k(1)=1$:
+\[
+ L_k(\lambda)=\frac{1}{2^kk!}\frac{d^k}{d\lambda^k}(\lambda^2-1)^k,
+ \qquad c_k=\frac{(2k)!}{2^k(k!)^2}.
+\]
+Integrate by parts $k$ times; all endpoint terms vanish.
+\[
+ \ip{L_k}{\lambda^j}
+ =\frac{(-1)^k}{2^kk!}\int_{-1}^1(\lambda^2-1)^k
+ \frac{d^k\lambda^j}{d\lambda^k}\,d\lambda=0\quad(0\le j<k).
+\]
+\[
+ L_k=c_k\lambda^k+\cdots
+ \quad\Longrightarrow\quad q_k=\frac{L_k}{c_k}.
+\]
+Put $I_k=\int_{-1}^1(1-\lambda^2)^k\,d\lambda$.
+\[
+ I_0=2,\qquad
+ 0=\int_{-1}^1\frac{d}{d\lambda}\bigl[\lambda(1-\lambda^2)^k\bigr]d\lambda
+ =(2k+1)I_k-2kI_{k-1}\quad(k\ge1),
+\]
+\[
+ I_k=\frac{2^{2k+1}(k!)^2}{(2k+1)!}.\]
+\[
+ \|L_k\|^2=\frac{(-1)^k}{2^kk!}\int_{-1}^1L_k^{(k)}(\lambda)(\lambda^2-1)^k\,d\lambda=\frac{c_k}{2^k}I_k=\frac{2}{2k+1}.
+\]
+\[
+ \boxed{\alpha_k=\sqrt{\frac{2k+1}{2}},\qquad
+ e_k(\lambda)=\sqrt{\frac{2k+1}{2}}\,L_k(\lambda),\quad k=0,\ldots,n.}
+\]
+\[
+ e_0=\frac1{\sqrt2},\quad e_1=\sqrt{\frac32}\lambda,\quad
+ e_2=\sqrt{\frac58}(3\lambda^2-1),\quad
+ e_3=\sqrt{\frac78}(5\lambda^3-3\lambda).
+\]
+\newpage
+\section{Problem 4}
+Prove Theorems 4.7 and 4.8 in the textbook.
+
+\textbf{Theorem 4.7.} An $n\times n$ matrix $A$ is unitary if and only if its $n$ columns (rows) form an orthonormal basis of $\C^n$.
+\par\Needspace{4\baselineskip}\textbf{Solution}\par
+
+\[
+ A=[a_1\ \cdots\ a_n],\qquad
+ (A^*A)_{ij}=a_i^*a_j=\ip{a_i}{a_j}.
+\]
+\[
+ A^*A=I\iff a_i^*a_j=\delta_{ij};\qquad
+ A^*A=I\Longrightarrow A^{-1}=A^*\Longrightarrow AA^*=I.
+\]
+The row statement follows from $AA^*=I$ in the same way; $n$ orthonormal vectors form a basis.
+
+\medskip
+\textbf{Theorem 4.8.} Let $\mathcal U\in L(V)$. The following are equivalent:
+\begin{enumerate}
+\item $\mathcal U$ is unitary;
+\item $\|\mathcal U\alpha\|=\|\alpha\|$, $\forall\alpha\in V$;
+\item $\mathcal U$ maps an orthonormal basis to an orthonormal basis;
+\item the matrix of $\mathcal U$ in an orthonormal basis is unitary.
+\end{enumerate}
+
+\par\Needspace{4\baselineskip}\textbf{Solution}\par
+
+\[
+ (1)\Longrightarrow(2):\quad
+ \|\mathcal U\alpha\|^2=\ip{\mathcal U\alpha}{\mathcal U\alpha}=\ip\alpha\alpha.
+\]
+\begin{align*}
+ (2)\Longrightarrow(1):\quad
+ 4\ip\alpha\beta
+ &=\|\alpha+\beta\|^2-\|\alpha-\beta\|^2\\
+ &\quad+i\|\alpha-i\beta\|^2-i\|\alpha+i\beta\|^2\\
+ &=4\ip{\mathcal U\alpha}{\mathcal U\beta}.
+\end{align*}
+Over $\R$, use only the first two terms. For an orthonormal basis $E=(e_1,\ldots,e_n)$,
+\[
+ (1)\Longrightarrow(3):\quad
+ \ip{\mathcal Ue_i}{\mathcal Ue_j}=\delta_{ij}.
+\]
+\[
+ (3)\Longrightarrow(1):\quad
+ \ip{\mathcal U\sum_i x_ie_i}{\mathcal U\sum_j y_je_j}
+ =\sum_{i,j}\bar x_i y_j\delta_{ij}
+ =\sum_i\bar x_i y_i=\ip{\sum_i x_ie_i}{\sum_j y_je_j}.
+\]
+\[
+ C=[\mathcal U]_E:\quad
+ \ip{\mathcal U\alpha}{\mathcal U\beta}=x^*C^*Cy,\qquad
+ \ip\alpha\beta=x^*y
+ \quad\Longrightarrow\quad (1)\iff C^*C=I\iff(4).
+\]
+\section{Problem 5}
+Let $A\in\C^{n\times n}$ and $r=\rank A$. Prove $A=A^*=A^2$ if and only if $A=UU^*$ for some $U\in\mathcal U^{n\times r}$, where $U^*U=I_r$.
+\par\Needspace{4\baselineskip}\textbf{Solution}\par
+
+\textbf{$(\Leftarrow)$}
+\[
+ A^*=(UU^*)^*=UU^*=A,\qquad
+ A^2=U(U^*U)U^*=UU^*=A,\qquad \rank A=\rank U=r.
+\]
+\textbf{$(\Rightarrow)$}
+\[
+ S=\im A,\quad T=\ker A,\qquad
+ x=Ax+(I-A)x\in S+T,\qquad S\cap T=\{0\}.
+\]
+\[
+ z\in T:\quad (Ay)^*z=y^*A^*z=y^*Az=0
+ \quad\Longrightarrow\quad T=S^\perp.
+\]
+Choose an orthonormal basis of $S$ and set $U=[u_1\ \cdots\ u_r]$.
+\[
+ U^*U=I_r,\qquad Ax\in S\Longrightarrow Ax=UU^*Ax,
+ \qquad (I-A)x\in S^\perp\Longrightarrow U^*Ax=U^*x.
+\]
+\[
+ Ax=UU^*x\quad(\forall x)\quad\Longrightarrow\quad\boxed{A=UU^*}.
+\]
+For $r=0$, take the $n\times0$ empty matrix $U$; then $UU^*=0=A$.
+\end{document}

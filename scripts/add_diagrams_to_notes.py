@@ -14,6 +14,11 @@ import re
 from build_diagrams import ROOT, TITLES
 
 CAPTIONS = {
+    "36_inner_product_gram": r"蓝、绿两条基向量不正交，因此 Gram 矩阵含非零交叉项。坐标 $(0,1)^T$ 代表第二个基向量，普通坐标长度平方为 1，而原向量长度平方为 2；计算几何量时必须使用 $x^*Gx$。",
+    "37_gram_schmidt_unitary": r"先保留第一列的单位方向，再从第二列减去该方向上的投影，剩余方向正交。投影系数及残差长度形成上三角矩阵 $R$；满秩与正对角条件一起保证 QR 唯一。",
+    "38_projection_adjoint": r"两图投向同一条横轴，但左图沿斜核方向投影，右图沿垂直方向投影。幂等只保证可以分解为像与核；加入自伴条件，核才等于像的正交补，得到 $UU^*$。",
+    "39_normal_schur": r"两矩阵都有特征值 1、3。左图严格上三角元 2 额外贡献平方范数 4；右图差额为零。一般矩阵先作酉 Schur 三角化，才能用这个差额判断正规性。",
+    "40_hermitian_positive": r"左图是实平面上的三条椭圆等值线，长短轴对应特征值 1、3。右图用正特征值和正顺序主子式验证同一矩阵正定；对复向量的结论由酉谱分解给出。",
     "01_algebra_rules": "先看集合配了几种运算，再看每种运算满足什么规则。群只讨论一种运算；环增加乘法与分配律；域要求非零标量可除。图中的箭头表示增加规则，不表示群、环、域是同一集合里的三层子集。",
     "02_linear_combination": r"左图把 $2u+v$ 画成首尾相接的两段，紫色箭头是结果。右图的第三个方向已能由前两个相加得到，因此三个向量整体相关；不能仅凭两两不平行判断无关。",
     "03_subspace_affine": r"左边的直线含原点且对线性组合封闭；中间的平移直线不含原点；右边的轴的并虽然含原点，但两个轴上向量相加会跑出集合。判断子空间时，这两个条件都要检查。",
@@ -53,6 +58,16 @@ CAPTIONS = {
 
 # Section labels are prefixes, so bilingual headings retain their English suffix.
 ROUTES = {
+    "lecture09/01_内积与Gram矩阵.md": [("二、Gram", ["36_inner_product_gram"])],
+    "lecture09/02_正交规范基与酉变换.md": [("二、Gram", ["37_gram_schmidt_unitary"])],
+    "lecture10/01_投影与伴随变换.md": [("二、正交补", ["38_projection_adjoint"])],
+    "lecture10/02_正规矩阵与Schur及QR分解.md": [("四、Schur", ["39_normal_schur"])],
+    "lecture10/03_Hermitian型与正定性.md": [("四、主子式", ["40_hermitian_positive"])],
+    "中文精简版/16_内积与Gram矩阵.md": [("二、Gram", ["36_inner_product_gram"])],
+    "中文精简版/17_正交规范基与酉变换.md": [("二、Gram", ["37_gram_schmidt_unitary"])],
+    "中文精简版/18_投影与伴随变换.md": [("二、正交补", ["38_projection_adjoint"])],
+    "中文精简版/19_正规矩阵与Schur及QR分解.md": [("四、Schur", ["39_normal_schur"])],
+    "中文精简版/20_Hermitian型与正定性.md": [("四、主子式", ["40_hermitian_positive"])],
     "中文精简版/01_代数基础与线性空间.md": [("一、运算与群", ["01_algebra_rules"]), ("四、线性组合与相关性", ["02_linear_combination"])],
     "中文精简版/02_基与换基及子空间.md": [("二、过渡矩阵", ["04_basis_coordinates"]), ("三、子空间、生成空间与秩", ["03_subspace_affine"]), ("五、直和与补空间", ["05_sum_direct_sum"])],
     "中文精简版/03_线性映射及其矩阵表示.md": [("一、线性映射与基本性质", ["11_linearity"]), ("二、矩阵表示", ["06_matrix_columns"]), ("三、换基", ["12_basis_change_map"]), ("四、核、像与秩零度", ["07_kernel_projection", "08_rank_nullity"]), ("五、同构", ["09_isomorphism"]), ("六、复合映射", ["10_composition"]), ("七、与状态空间模型", ["13_control_coordinates"])],
@@ -127,12 +142,16 @@ def update_notes():
             for section, figures in ROUTES[key]:
                 text = insert_section(text, section, "\n\n".join(block(f, path) for f in figures))
         else:
-            figure = "33_course_map" if path.name.startswith("00_") else "34_problem_routes"
+            if key.startswith("lecture09/"):
+                figure = "36_inner_product_gram"
+            elif key.startswith("lecture10/"):
+                figure = "39_normal_schur"
+            else:
+                figure = "33_course_map" if path.name.startswith("00_") else "34_problem_routes"
             pos = re.search(r"(?m)^## ", text)
             end = pos.start() if pos else len(text)
             text = text[:end].rstrip()+"\n\n"+block(figure,path)+"\n\n"+text[end:].lstrip("\n")
         writes[path] = text.rstrip()+"\n"
-    assert len(ROUTES) == 36
     assert set(ROUTES) <= {p.relative_to(ROOT / "notes").as_posix() for p in paths}
     for path, text in writes.items():
         path.write_text(text)
@@ -148,11 +167,11 @@ def write_index():
         "## 按中文版章节查图\n\n| 章节 | 图解主题 |\n| --- | --- |\n",
     ]
     for path in sorted(cn.glob("*.md")):
-        if not 1 <= int(path.name[:2]) <= 13:
+        if "中文精简版/" + path.name not in ROUTES:
             continue
         topics = [TITLES[f] for _, ids in ROUTES["中文精简版/"+path.name] for f in ids]
         chunks.append(f"| [{path.read_text().splitlines()[0][2:]}](中文精简版/{path.name}) | {'；'.join(topics)} |\n")
-    chunks.append("\n## 全部图解\n\n以下为 35 张图。PNG 直接显示；矢量版可放大查看。\n\n")
+    chunks.append(f"\n## 全部图解\n\n以下为 {len(TITLES)} 张图。PNG 直接显示；矢量版可放大查看。\n\n")
     for key in TITLES:
         chunks.append(f"### {key[:2]} {TITLES[key]}\n\n")
         chunks.append(f"![{TITLES[key]}](../assets/diagrams/{key}.png)\n\n")
@@ -183,7 +202,7 @@ def check():
                 errors.append(f"Missing asset: {path}")
     if errors:
         raise ValueError("\n".join(errors))
-    print(f"Checked {len(paths)} note files, 36 body chapters, {len(TITLES)} diagram pairs and all local links.")
+    print(f"Checked {len(paths)} note files, {len(ROUTES)} body chapters, {len(TITLES)} diagram pairs and all local links.")
 
 
 def main():

@@ -960,6 +960,10 @@ def save_figure(key):
     plt.close(fig)
 
 
+from inner_product_diagrams import register as register_inner_product_diagrams
+register_inner_product_diagrams(globals())
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("figures", nargs="*", help="Optional figure IDs; default: all")

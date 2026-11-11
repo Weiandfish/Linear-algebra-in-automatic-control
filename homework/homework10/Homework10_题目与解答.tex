@@ -1,0 +1,217 @@
+\documentclass[UTF8,10pt,letterpaper,fontset=fandol]{ctexart}
+\usepackage[margin=0.9in]{geometry}
+\usepackage{amsmath,amssymb,enumitem,needspace}
+\usepackage[unicode,hidelinks]{hyperref}
+\pagestyle{plain}
+\raggedbottom
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1pt}
+\setlength{\emergencystretch}{2em}
+\linespread{1.06}
+\AtBeginDocument{\setlength{\abovedisplayskip}{5pt}\setlength{\belowdisplayskip}{5pt}\setlength{\abovedisplayshortskip}{3pt}\setlength{\belowdisplayshortskip}{3pt}}
+\setcounter{secnumdepth}{0}
+\setlist[enumerate]{label=(\arabic*),leftmargin=2em,itemsep=0.2em,topsep=0.2em}
+\ctexset{section={format=\Large\bfseries,beforeskip=1.1ex,afterskip=0.7ex}}
+\newcommand{\C}{\mathbb C}
+\newcommand{\R}{\mathbb R}
+\newcommand{\F}{\mathbb F}
+\newcommand{\ip}[2]{\langle #1,#2\rangle}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\im}{im}
+\begin{document}
+\begin{center}
+{\LARGE 作业 10}\\[0.5em]
+2026 年 11 月 6 日\\[0.25em]
+姓名：YuanHao Tang\quad 学号：3120265621
+\end{center}
+\section{第 1 题}
+证明定理 4.24：自伴、斜自伴及酉变换都是正规变换。
+\par\Needspace{4\baselineskip}\textbf{解答}\par
+
+\begin{align*}
+ \mathcal A^*=\mathcal A&\Longrightarrow
+ \mathcal A\mathcal A^*=\mathcal A^2=\mathcal A^*\mathcal A,\\
+ \mathcal A^*=-\mathcal A&\Longrightarrow
+ \mathcal A\mathcal A^*=-\mathcal A^2=\mathcal A^*\mathcal A,\\
+ \mathcal U\text{ 为酉变换}&\Longrightarrow
+ \ip{\mathcal Ux}{\mathcal Uy}=\ip xy
+ \Longrightarrow \mathcal U^*\mathcal U=I.
+\end{align*}
+\[
+ \mathcal U^{-1}=\mathcal U^*,\qquad
+ \mathcal U\mathcal U^*=I=\mathcal U^*\mathcal U.
+\]
+由定理 4.23，三者均为正规变换。
+\section{第 2 题}
+证明定理 4.25：$A\in\C^{n\times n}$ 正规，当且仅当存在酉矩阵 $U$ 使 $U^*AU=\operatorname{diag}(\lambda_1,\ldots,\lambda_n)$。
+\par\Needspace{4\baselineskip}\textbf{解答}\par
+按课件定义，正规是指具有正交规范特征基。
+\begin{align*}
+ Au_j=\lambda_ju_j,\quad u_i^*u_j=\delta_{ij}
+ &\Longrightarrow U=[u_1\ \cdots\ u_n],\quad U^*U=I,\\
+ AU=U\Lambda&\Longrightarrow U^*AU=\Lambda.
+\end{align*}
+\[
+ U^*AU=\Lambda,\ U^*U=I
+ \Longrightarrow AU=U\Lambda
+ \Longrightarrow Au_j=\lambda_ju_j,\quad u_i^*u_j=\delta_{ij}.
+\]
+\section{第 3 题}
+证明定理 4.27：若 $A=(a_{ij})\in\C^{n\times n}$ 的特征值按重数为 $\lambda_1,\ldots,\lambda_n$，则 $\sum_i|\lambda_i|^2\le\sum_{i,j}|a_{ij}|^2$，等号当且仅当 $A$ 正规。
+\par\Needspace{4\baselineskip}\textbf{解答}\par
+由 Schur 引理，取酉矩阵 $Q$ 使 $T=Q^*AQ$ 为上三角矩阵，$t_{ii}=\lambda_i$。
+\begin{align*}
+ \sum_{i,j}|a_{ij}|^2
+ &=\tr(A^*A)=\tr(Q^*A^*A Q)=\tr(T^*T)\\
+ &=\sum_i|\lambda_i|^2+\sum_{i<j}|t_{ij}|^2
+ \ge\sum_i|\lambda_i|^2.
+\end{align*}
+\[
+ \text{等号}\iff t_{ij}=0\ (i<j)
+ \iff T\text{ 为对角矩阵}\Longrightarrow A\text{ 正规}.
+\]
+反之，$A$ 正规时由第 2 题取 $T=\Lambda$，即得等号。
+\newpage
+\section{第 4 题}
+求酉矩阵 $W$，使下列矩阵的 $W^*AW$ 为上三角矩阵。
+\[
+ A=\begin{pmatrix}1&1&1\\-1&1&1\\-1&-1&1\end{pmatrix}.
+\]
+
+\par\Needspace{4\baselineskip}\textbf{解答}\par
+
+\[
+ K=A-I,\quad
+ v_0=\frac1{\sqrt3}\begin{pmatrix}1\\-1\\1\end{pmatrix},\quad
+ u=\frac1{\sqrt2}\begin{pmatrix}1\\0\\-1\end{pmatrix},\quad
+ v=\frac1{\sqrt6}\begin{pmatrix}1\\2\\1\end{pmatrix}.
+\]
+\[
+ [v_0\ u\ v]^*[v_0\ u\ v]=I,\qquad
+ Kv_0=0,\quad Ku=-\sqrt3v,\quad Kv=\sqrt3u.
+\]
+\[
+ z_+=\frac{u+iv}{\sqrt2},\quad z_-=\frac{u-iv}{\sqrt2},\qquad
+ Kz_\pm=\pm i\sqrt3z_\pm,\quad z_+^*z_-=0,\quad\|z_\pm\|=1.
+\]
+\[
+ \boxed{W=[v_0\ z_+\ z_-]=
+ \begin{pmatrix}
+ 1/\sqrt3&(\sqrt3+i)/\sqrt{12}&(\sqrt3-i)/\sqrt{12}\\
+ -1/\sqrt3&2i/\sqrt{12}&-2i/\sqrt{12}\\
+ 1/\sqrt3&(-\sqrt3+i)/\sqrt{12}&(-\sqrt3-i)/\sqrt{12}
+ \end{pmatrix}}.
+\]
+\[
+ W^*W=I,\qquad
+ \boxed{W^*AW=\operatorname{diag}(1,1+i\sqrt3,1-i\sqrt3)}.
+\]
+\section{第 5 题}
+从正规矩阵的定义出发证明定理 4.28：$A$ 正规当且仅当 $AA^*=A^*A$。不得引用其他定理或结论。
+\par\Needspace{4\baselineskip}\textbf{解答}\par
+
+\textbf{$(\Rightarrow)$}
+由定义取正交规范特征基 $u_1,\ldots,u_n$，$Au_j=\lambda_ju_j$。
+\[
+ u_i^*A^*u_j=(Au_i)^*u_j=\bar\lambda_i\delta_{ij}
+ \Longrightarrow A^*u_j=\bar\lambda_ju_j.
+\]
+\[
+ AA^*u_j=|\lambda_j|^2u_j=A^*Au_j\quad(1\le j\le n)
+ \Longrightarrow AA^*=A^*A.
+\]
+\textbf{$(\Leftarrow)$}
+对阶数归纳。$n=1$ 显然。设 $n>1$，取 $\det(zI-A)$ 的根 $\mu$ 及单位向量 $u\in\ker(A-\mu I)$，置 $B=A-\mu I$。
+\[
+ BB^*=B^*B,\quad Bu=0,\qquad
+ \|B^*u\|^2=u^*BB^*u=u^*B^*Bu=0
+ \Longrightarrow A^*u=\bar\mu u.
+\]
+\[
+ u^*x=0\Longrightarrow
+ u^*Ax=(A^*u)^*x=\mu u^*x=0,\qquad
+ u^*A^*x=(Au)^*x=\bar\mu u^*x=0.
+\]
+因此 $u^\perp$ 对 $A,A^*$ 均不变，且其限制仍满足交换关系。
+\[
+ V=[u\ Q],\quad V^*V=I,\quad V^*AV=\begin{pmatrix}\mu&0\\0&C\end{pmatrix},\quad
+ V^*A^*V=\begin{pmatrix}\bar\mu&0\\0&C^*\end{pmatrix}
+ \Longrightarrow CC^*=C^*C.
+\]
+归纳得到 $u^\perp$ 上的正交规范特征基 $u_2,\ldots,u_n$；连同 $u$ 即为 $A$ 的正交规范特征基，故 $A$ 正规。
+\newpage
+\section{第 6 题}
+证明定理 4.29：设 $A\in\C_n^{n\times n}$（即 $\rank A=n$），则唯一存在 $A=UR$，其中 $U$ 酉、$R$ 上三角且对角元为正。
+\par\Needspace{4\baselineskip}\textbf{解答}\par
+
+\textbf{存在性。}
+\[
+ A=[a_1\ \cdots\ a_n],\qquad
+ v_j=a_j-\sum_{i=1}^{j-1}u_i(u_i^*a_j),\qquad
+ r_{jj}=\|v_j\|>0,\quad u_j=\frac{v_j}{r_{jj}}.
+\]
+\[
+ r_{ij}=u_i^*a_j\ (i<j),\quad r_{ij}=0\ (i>j),\qquad
+ u_i^*v_j=u_i^*a_j-\sum_{k<j}\delta_{ik}u_k^*a_j=0\ (i<j).
+\]
+列向量线性无关保证 $v_j\ne0$；于是
+\[
+ u_i^*u_j=\delta_{ij},\qquad
+ a_j=\sum_{i=1}^ju_ir_{ij}\quad\Longrightarrow\quad
+ \boxed{A=UR,\quad U^*U=I,\quad r_{jj}>0}.
+\]
+\textbf{唯一性。}
+\[
+ A=U_1R_1=U_2R_2\quad\Longrightarrow\quad
+ M=U_2^*U_1=R_2R_1^{-1},\qquad M^*M=I.
+\]
+$M$ 上三角，$m_{jj}=(R_2)_{jj}/(R_1)_{jj}>0$。由第一列及列间正交性，
+\[
+ |m_{11}|^2=1\Longrightarrow m_{11}=1,\qquad
+ \bar m_{11}m_{1j}=0\Longrightarrow m_{1j}=0\ (j>1).
+\]
+对右下角子块重复上述计算，
+\[
+ M=I\quad\Longrightarrow\quad U_1=U_2,\qquad R_1=R_2.
+\]
+\section{第 7 题}
+证明定理 4.30(1)：若 $A$ 正规，则 $A$ 为 Hermitian 矩阵当且仅当其全部特征值为实数。
+\par\Needspace{4\baselineskip}\textbf{解答}\par
+
+\[
+ A=U\Lambda U^*,\qquad A^*=U\bar\Lambda U^*.
+\]
+\[
+ \boxed{A=A^*\iff\Lambda=\bar\Lambda
+ \iff\lambda_j=\bar\lambda_j\ (\forall j)\iff\lambda_j\in\R\ (\forall j)}.
+\]
+\section{第 8 题}
+证明定理 4.31(1)：$A\in\C^{n\times n}$ 为 Hermitian 矩阵当且仅当对每个 $x\in\C^n$，$x^*Ax\in\R$。
+\par\Needspace{4\baselineskip}\textbf{解答}\par
+
+\textbf{$(\Rightarrow)$}\quad
+ $\overline{x^*Ax}=x^*A^*x=x^*Ax\Longrightarrow x^*Ax\in\R$.
+
+\textbf{$(\Leftarrow)$}\quad
+ $H=A-A^*$:\quad
+ $x^*Hx=x^*Ax-\overline{x^*Ax}=0$.
+\begin{align*}
+ x=e_i&\Longrightarrow h_{ii}=0,\\
+ x=e_i+e_j&\Longrightarrow h_{ij}+h_{ji}=0,\\
+ x=e_i+ie_j&\Longrightarrow ih_{ij}-ih_{ji}=0.
+\end{align*}
+\[
+ h_{ij}=h_{ji}=0\quad(\forall i,j)\quad\Longrightarrow\quad H=0
+ \quad\Longrightarrow\quad\boxed{A=A^*}.
+\]
+\section{第 9 题}
+设 $A,B$ 均为 Hermitian 矩阵，证明 $AB$ 为 Hermitian 矩阵当且仅当 $AB=BA$（教材第 168 页性质 5）。
+\par\Needspace{4\baselineskip}\textbf{解答}\par
+
+\[
+ (AB)^*=B^*A^*=BA
+ \quad\Longrightarrow\quad
+ \boxed{AB\text{ 为 Hermitian 矩阵}\iff AB=(AB)^*\iff AB=BA}.
+\]
+\end{document}
