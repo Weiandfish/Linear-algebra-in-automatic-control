@@ -59,7 +59,7 @@ $$
 $$
 A\succeq0\iff\lambda_i\ge0\ (\forall i)
 \iff A=Q^*Q
-\iff P^*AP=\operatorname{diag}(I_r,0),\quad r=\rank A.
+\iff P^*AP=\operatorname{diag}(I_r,0),\quad r=\operatorname{rank} A.
 $$
 
 半正定的因子 $Q$ 可以奇异。可逆合同保持正定性和半正定性：$x^*P^*APx=(Px)^*A(Px)$。
