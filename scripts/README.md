@@ -38,3 +38,19 @@ python3 scripts/add_diagrams_to_notes.py --check
 该命令检查全部笔记是否配图、图解区块是否重复、PNG 和 SVG 是否齐全，以及 README 和笔记中的本地链接是否有效。修改数值例子时，还需要核对矩阵运算、曲线或块长与图注一致，并重新查看图片的文字和箭头布局。
 
 第四章的 36—40 号图由 `inner_product_diagrams.py` 注册到统一生成器，沿用同一配色、数学排版和自动布局检查。新图涵盖 Gram、Gram–Schmidt、投影、Schur 差额与正定性。
+
+## 中文精简版打印 PDF
+
+`build_print_pdf.py` 从中文精简版的全部内容生成 A4 正文、练习答案、合订本三份 PDF，输出至 `output/pdf/`。练习分册包含 `notes/练习阅读说明.md`，可独立阅读。正文按阅读顺序连续编号为 18 章；原 Markdown 文件名保持不变。
+
+正文使用宋体风格的 Noto Serif CJK，标题使用 Noto Sans CJK，公式由 KaTeX 排为矢量文字。图解从已有 SVG 生成独立的白底打印配色，保留矢量线条和公式，不覆盖原来的黑底图片。合并后重新添加连续页码、章节书签，目录页码随实际分页生成。
+
+需要 Python 包 `markdown-it-py`、`pypdf`、`reportlab`，Node.js 包 `katex`、`playwright`，以及 Chrome、Poppler 和上述 CJK 字体。例如：
+
+```bash
+python3 -m pip install markdown-it-py pypdf reportlab
+npm install --prefix tmp/pdfs/runtime katex@0.16.22 playwright
+python3 scripts/build_print_pdf.py
+```
+
+可通过 `--node`、`--node-modules`、`--katex-dir`、`--pdf-python` 指定已有运行时。`--katex-dir` 指向含 `katex.js`、`katex.min.css` 和 `fonts/` 的 `dist` 目录；`CHROME_BIN` 可指定 Chrome 路径。中间 HTML、逐章 PDF、打印用 SVG 和分页记录存放在已忽略的 `tmp/pdfs/chinese-print/`。发布前需渲染最终 PDF，检查公式、图解、目录页码与页边裁切。

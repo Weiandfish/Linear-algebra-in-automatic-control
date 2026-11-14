@@ -1,0 +1,40 @@
+@page { size: A4; margin: 17mm 17mm 18mm; }
+* { box-sizing: border-box; }
+html { background: white; color: #111; }
+body { margin: 0; font: 10.5pt/1.55 "Noto Serif CJK SC", "Noto Serif CJK JP", serif; }
+article { width: 176mm; }
+h1, h2, h3 { font-family: "Noto Sans CJK SC", "Noto Sans CJK JP", sans-serif; break-after: avoid; }
+h1 { font-size: 19pt; line-height: 1.45; margin: 0 0 7mm; padding-bottom: 3mm; border-bottom: 1.2pt solid #222; }
+h2 { font-size: 13.5pt; line-height: 1.4; margin: 6mm 0 3mm; }
+h3 { font-size: 11.5pt; line-height: 1.45; margin: 5mm 0 2.5mm; }
+p { margin: 2.5mm 0; orphans: 3; widows: 3; }
+strong { font-weight: 700; }
+ul, ol { padding-left: 6mm; margin: 3mm 0; }
+li { margin: 1.4mm 0; }
+table { width: 100%; border-collapse: collapse; font-size: 9pt; line-height: 1.5; margin: 4mm 0; }
+thead { display: table-header-group; }
+tr { break-inside: avoid; }
+td, th { border: .5pt solid #b7b7b7; padding: 1.7mm 2mm; text-align: left; }
+th { background: #f1f1f1; font-weight: 700; }
+hr { border: 0; border-top: .5pt solid #bbb; margin: 5mm 0; }
+figure { margin: 5mm 0; padding: 0; break-inside: avoid; }
+figure p { font-size: 9pt; line-height: 1.5; }
+figure p:first-child { font: 700 10pt/1.45 "Noto Sans CJK SC", sans-serif; margin-bottom: 2mm; }
+figure img { display: block; width: 100%; max-height: 190mm; object-fit: contain; }
+img { max-width: 100%; }
+.katex { font-size: 1.04em; }
+.katex-display { margin: 0; }
+.display-equation { text-align: center; margin: 3.4mm 0; break-inside: avoid; line-height: 1.35; }
+.display-equation .katex { max-width: 100%; }
+.front { font-family: "Noto Sans CJK SC", sans-serif; }
+.cover { height: 250mm; display: flex; flex-direction: column; justify-content: center; break-after: page; }
+.cover .eyebrow { font-size: 11pt; letter-spacing: 3pt; color: #555; margin-bottom: 8mm; }
+.cover h1 { font-size: 36pt; border: 0; margin: 0 0 3mm; padding: 0; }
+.cover h2 { font-size: 22pt; font-weight: 400; margin: 0 0 17mm; }
+.cover .description { border-top: 1pt solid #333; padding-top: 6mm; font-size: 11pt; line-height: 1.9; }
+.cover .print-note { margin-top: 14mm; font-size: 9pt; color: #444; line-height: 1.8; }
+.toc h1 { font-size: 20pt; }
+.toc-line { display: flex; align-items: baseline; gap: 3mm; font-size: 10pt; line-height: 1.5; padding: 1.75mm 0; break-inside: avoid; }
+.toc-line .dots { flex: 1; border-bottom: .5pt dotted #888; }
+.toc-line .page { min-width: 9mm; text-align: right; font-variant-numeric: tabular-nums; }
+.toc-label { font-size: 9pt; color: #555; margin: 2mm 0 5mm; }
