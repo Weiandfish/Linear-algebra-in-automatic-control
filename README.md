@@ -6,7 +6,7 @@ Linear Algebra in Automatic Control — 课程讲义、中英文学习笔记与�
 
 ## 从这里开始
 
-英文作业打印版（第 1—12 次）：[题目册，22 页](output/pdf/English_Homework_01-12_Problems.pdf) · [题目与解答册，32 页](output/pdf/English_Homework_01-12_Solutions.pdf)。两册均为 A4，目录可跳转到各次作业。
+英文作业打印版（第 1—12 次）：[手写练习册，26 页](output/pdf/English_Homework_01-12_Problems.pdf) · [题目与解答册，32 页](output/pdf/English_Homework_01-12_Solutions.pdf)。题间有无横线的演算空白，A4 双面打印题目册需 13 张纸。两册目录均可跳转到各次作业。
 
 - [第 11 讲：谱投影与 SVD](notes/lecture11/00_阅读导航.md) · [第 12 讲：满秩分解、最小二乘与极分解](notes/lecture12/00_阅读导航.md) · [全课程复习提纲](notes/lecture12/04_全课程复习提纲.md)
 - [逐步练习总导航](notes/练习总导航.md)：13 份练习文件，题目补齐条件、解答逐步推导，包含矩阵表示、核像、标准形和内积；先查[符号与做题方法](notes/练习阅读说明.md)。
