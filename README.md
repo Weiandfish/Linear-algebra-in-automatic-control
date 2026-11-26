@@ -2,14 +2,17 @@
 
 Linear Algebra in Automatic Control — 课程讲义、中英文学习笔记与作业解答。
 
-当前整理范围为第 1—10 讲文件（第 10 讲含两部分）和 Homework 1—10，内容包括线性空间、基与换基、子空间、线性映射、多项式、理想、Smith 标准形、不变多项式、初等因子、特征值、不变子空间、自然标准形、复数与实数 Jordan 标准形、最小多项式、循环子空间及两种分解、内积、正交规范基、酉变换、投影、伴随、正规矩阵、Schur 与 QR 分解、Hermitian 型与正定性，以及相关控制背景。文件第 8、9、10(1)、10(2) 讲的封面分别写作 Lecture 9、10、11、12，各导航已注明。
+当前整理范围为第 1—12 讲文件（第 10、12 讲各含两部分）和 Homework 1—12，内容包括线性空间、基与换基、子空间、线性映射、多项式、理想、Smith 标准形、不变多项式、初等因子、特征值、不变子空间、自然标准形、复数与实数 Jordan 标准形、最小多项式、循环子空间及两种分解、内积、正交规范基、酉变换、投影、伴随、正规矩阵、Schur 与 QR 分解、Hermitian 型与正定性、谱分解与奇异值分解、满秩分解、最小二乘和极分解，以及相关控制背景。文件第 8、9、10(1)、10(2) 讲的封面分别写作 Lecture 9、10、11、12，第 11、12(1)、12(2) 讲封面依次为 Lecture 13、14、15。
 
 ## 从这里开始
 
-- [逐步练习总导航](notes/练习总导航.md)：11 份练习文件，题目补齐条件、解答逐步推导，包含矩阵表示、核像、标准形和内积；先查[符号与做题方法](notes/练习阅读说明.md)。
+英文作业打印版（第 1—12 次）：[题目册，22 页](output/pdf/English_Homework_01-12_Problems.pdf) · [题目与解答册，32 页](output/pdf/English_Homework_01-12_Solutions.pdf)。两册均为 A4，目录可跳转到各次作业。
 
-- [通俗图解索引](notes/图解索引.md)：40 张图，涵盖坐标与换基、核与像、标准形、分解，以及内积、投影、正规与正定；全部 46 篇中英文正文已在对应小节嵌图，并配中文读图说明。
-- [纯中文精简讲义](notes/中文精简版/00_阅读导航.md)：覆盖第 1—10 讲文件，共十八个正文大章；保留核心定义、必要条件、推导与计算例题。第五至第七讲包含史密斯形、初等因子、特征空间、自然标准形、复实若尔当形、链与完整换基矩阵；另有前三讲及第五至第八讲共 40 道自测题与答案。
+- [第 11 讲：谱投影与 SVD](notes/lecture11/00_阅读导航.md) · [第 12 讲：满秩分解、最小二乘与极分解](notes/lecture12/00_阅读导航.md) · [全课程复习提纲](notes/lecture12/04_全课程复习提纲.md)
+- [逐步练习总导航](notes/练习总导航.md)：13 份练习文件，题目补齐条件、解答逐步推导，包含矩阵表示、核像、标准形和内积；先查[符号与做题方法](notes/练习阅读说明.md)。
+
+- [通俗图解索引](notes/图解索引.md)：40 张图，涵盖坐标与换基、核与像、标准形、分解，以及内积、投影、正规与正定；前十讲的 46 篇中英文正文已在对应小节嵌图，并配中文读图说明。
+- [纯中文精简讲义](notes/中文精简版/00_阅读导航.md)：电子版覆盖第 1—12 讲文件，共二十三个正文大章；保留核心定义、必要条件、推导与计算例题。第五至第七讲包含史密斯形、初等因子、特征空间、自然标准形、复实若尔当形、链与完整换基矩阵；另有前三讲及第五至第八讲共 40 道自测题与答案。
 - [Lecture 1–2 阅读导航](notes/lecture01-02/00_阅读导航.md)：讲义页码对照、学习目标和章节目录。
 - [Lecture 3 阅读导航](notes/lecture03/00_阅读导航.md)：第三讲分章中英文教学笔记、讲义对照和作业关联。
 - [Lecture 4 阅读导航](notes/lecture04/00_阅读导航.md)：三个双语正文大章、8 道练习、公式速查与课件勘误。
@@ -31,6 +34,8 @@ Linear Algebra in Automatic Control — 课程讲义、中英文学习笔记与�
 - [Homework 8 中文版](homework/homework08/Homework8_题目与解答.pdf) / [英文版](homework/homework08/Homework8_英文题目与解答.pdf)：最小多项式、平移算子的广义特征向量、换基矩阵与循环生成元的五道题。
 - [Homework 9 中文版](homework/homework09/Homework9_题目与解答.pdf) / [英文版](homework/homework09/Homework9_英文题目与解答.pdf)：平移最小多项式、内积不等式、Legendre 基、酉变换与正交投影，共 5 题。
 - [Homework 10 中文版](homework/homework10/Homework10_题目与解答.pdf) / [英文版](homework/homework10/Homework10_英文题目与解答.pdf)：正规、Schur、QR 与 Hermitian 矩阵，共 9 题；以公式推导为主。
+- [Homework 11 中文版](homework/homework11/Homework11_题目与解答.pdf) / [英文版](homework/homework11/Homework11_英文题目与解答.pdf)：谱投影与奇异值分解，共 6 题。
+- [Homework 12 中文版](homework/homework12/Homework12_题目与解答.pdf) / [英文版](homework/homework12/Homework12_英文题目与解答.pdf)：满秩因子、消元矩阵与秩恒等式，共 4 题。
 
 ## 目录结构
 
@@ -47,7 +52,9 @@ Linear Algebra in Automatic Control — 课程讲义、中英文学习笔记与�
 │   ├── lecture08/          # 第八份讲义（封面 Lecture 9）：两个正文大章、导航和练习速查
 │   ├── lecture09/          # 文件第九讲（封面 Lecture 10）：两个正文大章
 │   ├── lecture10/          # 两份课件（封面 Lecture 11、12）：三个正文大章
-│   └── 中文精简版/         # 十八个正文大章、导航和两份练习答案，共二十一个 Markdown 文件
+│   ├── lecture11/          # 谱分解、SVD 与练习
+│   ├── lecture12/          # 三种分解、最小二乘、复习提纲与练习
+│   └── 中文精简版/         # 二十三个正文大章、导航与两份综合练习
 ├── homework/
 │   ├── homework01/         # 原始题目、中英文 LaTeX 源码、PDF 和编译脚本
 │   ├── homework02/         # 第二次作业，含双击编译入口
@@ -58,11 +65,13 @@ Linear Algebra in Automatic Control — 课程讲义、中英文学习笔记与�
 │   ├── homework07/         # 第七次作业，含双击编译入口
 │   ├── homework08/         # 第八次作业，含双击编译入口
 │   ├── homework09/         # 第九次作业，中英文推导及 Windows/Linux 编译入口
-│   └── homework10/         # 第十次作业，中英文推导及 Windows/Linux 编译入口
+│   ├── homework10/         # 第十次作业，中英文推导及 Windows/Linux 编译入口
+│   ├── homework11/         # 谱分解与 SVD 作业
+│   └── homework12/         # 满秩分解与秩恒等式作业
 ├── assets/diagrams/       # 图解 PNG 与 SVG，正文直接显示 PNG
 ├── scripts/              # 图解生成与嵌入脚本
 └── materials/
-    ├── lectures/           # 第 1—10 讲原始课件，第 10 讲保留两份
+    ├── lectures/           # 第 1—12 讲原始课件，第 10、12 讲各保留两份
     └── reference/          # 参考教材
 ```
 
@@ -321,13 +330,15 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\homework\homework08\build.
 
 新增 5 张图继续使用黑底、亮色、中英对照及 Computer Modern 数学字体；每图含具体计算与判据。另附 [8 道第九讲练习](notes/lecture09/03_练习与公式速查.md)和 [10 道第十讲练习](notes/lecture10/04_练习与公式速查.md)。中文精简版保留原练习文件编号 14、15，新增正文续用 16—20，原链接继续有效。
 
-## Homework 9—10
+## Homework 9—12
 
-日期分别为 2026 年 11 月 4、6 日。两次作业保留全部 5、9 题及子题，每次提供中英文独立版本，首页包含 YuanHao Tang / 3120265621。解答减少文字说明，用对齐公式展示关键推导。
+第 9—12 次作业的题面日期依次为 2026 年 11 月 4、6、11、13 日，分别有 5、9、6、4 道大题。每次均提供中英文独立版本及 LaTeX 源码。
 
 | 作业 | 中文 PDF / 源码 | 英文 PDF / 源码 | 原题 |
 | --- | --- | --- | --- |
 | Homework 9 | [PDF](homework/homework09/Homework9_题目与解答.pdf) / [TeX](homework/homework09/Homework9_题目与解答.tex) | [PDF](homework/homework09/Homework9_英文题目与解答.pdf) / [TeX](homework/homework09/Homework9_英文题目与解答.tex) | [查看](homework/homework09/Homework9_原始题目.pdf) |
 | Homework 10 | [PDF](homework/homework10/Homework10_题目与解答.pdf) / [TeX](homework/homework10/Homework10_题目与解答.tex) | [PDF](homework/homework10/Homework10_英文题目与解答.pdf) / [TeX](homework/homework10/Homework10_英文题目与解答.tex) | [查看](homework/homework10/Homework10_原始题目.pdf) |
+| Homework 11 | [PDF](homework/homework11/Homework11_题目与解答.pdf) / [TeX](homework/homework11/Homework11_题目与解答.tex) | [PDF](homework/homework11/Homework11_英文题目与解答.pdf) / [TeX](homework/homework11/Homework11_英文题目与解答.tex) | [查看](homework/homework11/Homework11_原始题目.pdf) |
+| Homework 12 | [PDF](homework/homework12/Homework12_题目与解答.pdf) / [TeX](homework/homework12/Homework12_题目与解答.tex) | [PDF](homework/homework12/Homework12_英文题目与解答.pdf) / [TeX](homework/homework12/Homework12_英文题目与解答.tex) | [查看](homework/homework12/Homework12_原始题目.pdf) |
 
 Windows 双击各目录的 `编译PDF.cmd`（依赖 XeLaTeX）；Linux/macOS 运行各目录的 `build.sh`（支持 XeLaTeX 或 Tectonic）。作业 10 第 5 题从课件的正交规范特征基定义直接证明，不引用其他正规判据；第 6 题明确保留满秩条件。

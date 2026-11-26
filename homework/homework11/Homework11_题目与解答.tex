@@ -1,0 +1,118 @@
+\documentclass[UTF8,10pt,letterpaper,fontset=fandol]{ctexart}
+\usepackage[margin=0.9in]{geometry}
+\usepackage{amsmath,amssymb,enumitem,needspace}
+\usepackage[unicode,hidelinks]{hyperref}
+\pagestyle{plain}
+\raggedbottom
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1pt}
+\setlength{\emergencystretch}{2em}
+\linespread{1.06}
+\AtBeginDocument{\setlength{\abovedisplayskip}{5pt}\setlength{\belowdisplayskip}{5pt}\setlength{\abovedisplayshortskip}{3pt}\setlength{\belowdisplayshortskip}{3pt}}
+\setcounter{secnumdepth}{0}
+\setlist[enumerate]{label=(\arabic*),leftmargin=2em,itemsep=0.2em,topsep=0.2em}
+\ctexset{section={format=\Large\bfseries,beforeskip=1.1ex,afterskip=0.7ex}}
+\newcommand{\C}{\mathbb C}
+\newcommand{\R}{\mathbb R}
+\newcommand{\F}{\mathbb F}
+\newcommand{\ip}[2]{\langle #1,#2\rangle}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\im}{im}
+\begin{document}
+\begin{center}
+{\LARGE 作业 11}\\[0.5em]
+2026 年 11 月 11 日\\[0.25em]
+姓名：YuanHao Tang\quad 学号：3120265621
+\end{center}
+\section{第 1 题}
+求下列矩阵的谱分解。\par
+\[A=\begin{pmatrix}0&1&1&-1\\1&0&-1&1\\1&-1&0&1\\-1&1&1&0\end{pmatrix}.\]
+\par\Needspace{4\baselineskip}\textbf{解答}\par
+取 $v=(1,-1,-1,1)^T$。由 $A=I-vv^T,\ v^Tv=4$ 得\par
+\[Av=-3v,\qquad Aw=w\quad(w\perp v).\]
+故两特征空间的正交投影给出\par
+\[P_{-3}=\tfrac14 vv^T,\qquad P_1=I-\tfrac14 vv^T,\qquad
+\boxed{A=-3P_{-3}+P_1}.\]
+
+\section{第 2 题}
+设 $A\in\C^{m\times n}$ 的秩为 $r$，正奇异值为 $\sigma_1\ge\cdots\ge\sigma_r>0$。设对应 SVD 的酉矩阵 $U,V$ 的列分别为 $x_1,\ldots,x_n$ 和 $y_1,\ldots,y_m$。证明：\par
+\begin{align*}
+(1)\quad &Ax_j=\sigma_j y_j,\quad A^*y_j=\sigma_jx_j\quad(1\le j\le r);\\
+(2)\quad &Ax=\sum_{j=1}^r\sigma_j y_j\ip{x_j}{x},\qquad
+ A^*y=\sum_{j=1}^r\sigma_j x_j\ip{y_j}{y}
+ \quad(x\in\C^n,\ y\in\C^m).
+\end{align*}
+\par\Needspace{4\baselineskip}\textbf{解答}\par
+$A=VDU^*\Rightarrow AU=VD,\ A^*V=UD^*$。比较前 $r$ 列得 (1)，其余列为零。\par
+在两组正交规范基下展开：\par
+\[
+ Ax=\sum_{j=1}^n (Ax_j)(x_j^*x),\qquad
+ A^*y=\sum_{j=1}^m(A^*y_j)(y_j^*y).
+\]
+只保留前 $r$ 项，代入 (1) 即得 (2)。\par
+\newpage
+\section{第 3 题}
+求矩阵 $A=\left(\begin{smallmatrix}3&4\\0&0\\0&0\end{smallmatrix}\right)$ 的一个奇异值分解。\par
+\par\Needspace{4\baselineskip}\textbf{解答}\par
+$AA^T=\operatorname{diag}(25,0,0)$，故 $\sigma_1=5,\ y_1=e_1$。取 $x_1=A^Te_1/5=(3,4)^T/5$，补以 $x_2=(-4,3)^T/5\in\ker A$：\par
+\[
+ \boxed{A=VDU^T},\qquad V=I_3,\quad
+ D=\begin{pmatrix}5&0\\0&0\\0&0\end{pmatrix},\quad
+ U=\tfrac15\begin{pmatrix}3&-4\\4&3\end{pmatrix}.
+\]
+\section{第 4 题}
+求下列矩阵的奇异值分解：\par
+\[
+ A=\begin{pmatrix}2&1&-2&3\\0&4&1&1\\2&5&-2&4\end{pmatrix}.
+\]
+\par\Needspace{4\baselineskip}\textbf{解答}\par
+令 $G=AA^T$：\par
+\[
+G=\begin{pmatrix}18&5&25\\5&18&22\\25&22&49\end{pmatrix},
+\qquad p(t)=\det(tI-G)=t^3-85t^2+954t-189 .
+\]
+$p$ 的三根 $t_1,t_2,t_3$ 依次位于 $(71,72),(13,14),(0,1)$。将 $G-tI$ 的前两行作叉积：\par
+\[
+ w(t)=\begin{pmatrix}25t-340\\22t-271\\(18-t)^2-25\end{pmatrix},\qquad
+ y_j=\frac{w(t_j)}{\|w(t_j)\|},\quad
+ \sigma_j=\sqrt{t_j},\quad x_j=\frac{A^Ty_j}{\sigma_j}\quad(1\le j\le3).
+\]
+$(G-tI)w(t)=(0,0,-p(t))^T$，故 $Gy_j=t_jy_j$。取 $x_4=(-11,-2,0,8)^T/\sqrt{189}\in\ker A$。\par
+\[
+ V=[y_1\ y_2\ y_3],\quad U=[x_1\ x_2\ x_3\ x_4],\quad
+ D=[\,\operatorname{diag}(\sigma_1,\sigma_2,\sigma_3)\ \ 0\,],\qquad \boxed{A=VDU^T}.
+\]
+验算：$x_i^Tx_j=y_i^TGy_j/(\sigma_i\sigma_j)=\delta_{ij}$（$i,j\le3$），$AU=VD$。\par
+\newpage
+\section{第 5 题}
+验证 $A$ 正规，并求它的谱分解：\par
+\[
+ A=\begin{pmatrix}1&-1&0\\-1&2&-1\\0&-1&3\end{pmatrix}.
+\]
+\par\Needspace{4\baselineskip}\textbf{解答}\par
+$A^*=A$，故 $A$ 正规。置 $H=A-2I$，则 $\det(tI-H)=t(t^2-3)$。\par
+在 $0,\pm\sqrt3$ 上插值得 $H$ 的谱投影：\par
+\[
+ P_0=I-\frac{H^2}{3},\qquad
+ P_+=\frac{H^2+\sqrt3 H}{6},\qquad P_-=\frac{H^2-\sqrt3 H}{6},
+ \qquad H^2=\begin{pmatrix}2&1&1\\1&2&-1\\1&-1&2\end{pmatrix}.
+\]
+由 $A=2I+H$ 得\par
+\[\boxed{A=(2-\sqrt3)P_-+2P_0+(2+\sqrt3)P_+}.\]
+\section{第 6 题}
+验证以下矩阵是单纯矩阵（可对角化），并求其谱分解：\par
+\[
+ A=\begin{pmatrix}1&0&0&0\\-1&0&1&1\\0&0&-1&0\\1&1&1&0\end{pmatrix}.
+\]
+\par\Needspace{4\baselineskip}\textbf{解答}\par
+$A^2=I,\ A\ne\pm I$，故 $m_A(t)=(t-1)(t+1)$ 无重根，$A$ 可对角化。两谱投影为\par
+\[
+ P_+=\tfrac12\begin{pmatrix}2&0&0&0\\-1&1&1&1\\0&0&0&0\\1&1&1&1\end{pmatrix},\qquad
+ P_-=\tfrac12\begin{pmatrix}0&0&0&0\\1&1&-1&-1\\0&0&2&0\\-1&-1&-1&1\end{pmatrix}.
+\]
+\[
+ P_\pm=(I\pm A)/2,\qquad P_\pm^2=P_\pm,\quad P_+P_-=0,\quad
+ P_++P_-=I,\qquad \boxed{A=P_+-P_-}.
+\]
+\end{document}

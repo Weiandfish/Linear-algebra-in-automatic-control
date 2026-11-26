@@ -1,0 +1,93 @@
+\documentclass[UTF8,10pt,letterpaper,fontset=fandol]{ctexart}
+\usepackage[margin=0.9in]{geometry}
+\usepackage{amsmath,amssymb,enumitem,needspace}
+\usepackage[unicode,hidelinks]{hyperref}
+\pagestyle{plain}
+\raggedbottom
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1pt}
+\setlength{\emergencystretch}{2em}
+\linespread{1.06}
+\AtBeginDocument{\setlength{\abovedisplayskip}{5pt}\setlength{\belowdisplayskip}{5pt}\setlength{\abovedisplayshortskip}{3pt}\setlength{\belowdisplayshortskip}{3pt}}
+\setcounter{secnumdepth}{0}
+\setlist[enumerate]{label=(\arabic*),leftmargin=2em,itemsep=0.2em,topsep=0.2em}
+\ctexset{section={format=\Large\bfseries,beforeskip=1.1ex,afterskip=0.7ex}}
+\newcommand{\C}{\mathbb C}
+\newcommand{\R}{\mathbb R}
+\newcommand{\F}{\mathbb F}
+\newcommand{\ip}[2]{\langle #1,#2\rangle}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\im}{im}
+\begin{document}
+\begin{center}
+{\LARGE Homework 12}\\[0.5em]
+November 13, 2026\\[0.25em]
+Name: YuanHao Tang\quad Student ID: 3120265621
+\end{center}
+\section{Problem 1}
+Prove Theorem 5.10. For $A\in\C^{m\times n}$ of rank $r$, show that $A=BC$ with $B\in\C^{m\times r}$ of full column rank and $C\in\C^{r\times n}$ of full row rank. Give a practical procedure for obtaining invertible $P,Q$ and verify the ranks in\par
+\[
+ PAQ=\begin{pmatrix}I_r&D\\0&0\end{pmatrix},\qquad
+ B=P^{-1}\binom{I_r}{0},\qquad C=[\,I_r\ D\,]Q^{-1}.
+\]
+\par\Needspace{4\baselineskip}\textbf{Solution}\par
+Find pivot columns by elimination. Permute them to the front: $AQ=[B_0\ N]$. Since $B_0$ spans the column space, $N=B_0D$.\par
+Row-reduce $[B_0\mid I_m]\longrightarrow[\binom{I_r}{0}\mid P]$. Then $PN=\binom D0$, so\par
+\[
+ A=P^{-1}\binom{I_r}{0}[\,I_r\ D\,]Q^{-1}=BC.
+\]
+The identity minors give rank $r$, preserved by $P^{-1},Q^{-1}$. For $r=0$, take empty factors.\par
+\section{Problem 2}
+Find a full rank factorization of the following matrix. Display the transformations $T_1,T_2$ clearing the first and third pivot columns, $P=T_2T_1$, $P^{-1}$, and the two factors.\par
+\[
+ A=\begin{pmatrix}1&2&1&1&4\\2&4&3&0&8\\3&6&4&1&12\end{pmatrix}.
+\]
+\par\Needspace{4\baselineskip}\textbf{Solution}\par
+Apply $R_2\gets R_2-2R_1,\ R_3\gets R_3-3R_1$, then $R_1\gets R_1-R_2,\ R_3\gets R_3-R_2$:\par
+\[
+T_1=\begin{pmatrix}1&0&0\\-2&1&0\\-3&0&1\end{pmatrix},\quad
+T_1A=\begin{pmatrix}1&2&1&1&4\\0&0&1&-2&0\\0&0&1&-2&0\end{pmatrix},\quad
+T_2=\begin{pmatrix}1&-1&0\\0&1&0\\0&-1&1\end{pmatrix}.
+\]
+\[
+ P=\begin{pmatrix}3&-1&0\\-2&1&0\\-1&-1&1\end{pmatrix},\quad
+ P^{-1}=\begin{pmatrix}1&1&0\\2&3&0\\3&4&1\end{pmatrix},\quad
+ PA=\begin{pmatrix}1&2&0&3&4\\0&0&1&-2&0\\0&0&0&0&0\end{pmatrix}.
+\]
+Take the first two columns of $P^{-1}$ and the nonzero rows of $PA$:\par
+\[
+ \boxed{A=BC=\begin{pmatrix}1&1\\2&3\\3&4\end{pmatrix}
+ \begin{pmatrix}1&2&0&3&4\\0&0&1&-2&0\end{pmatrix}} .
+\]
+\newpage
+\section{Problem 3}
+Prove Lemma 5.1: for every complex matrix $A$, $\rank(AA^*)=\rank(A^*A)=\rank A$.\par
+\par\Needspace{4\baselineskip}\textbf{Solution}\par
+For every $x\in\C^n$,\par
+\[
+ A^*Ax=0\ \Longrightarrow\ 0=x^*A^*Ax=\|Ax\|^2
+ \ \Longrightarrow\ Ax=0,\qquad \ker(A^*A)=\ker A.
+\]
+Rank-nullity gives $\rank(A^*A)=\rank A$ and similarly $\rank(AA^*)=\rank A^*$. Since $\ker A^*=(\im A)^\perp$, $\rank A^*=\rank A$.\par
+\section{Problem 4}
+Find full rank factorizations for matrices (a) and (d):\par
+\[
+ A_1=\begin{pmatrix}2&5&8&11&14\\2&4&6&8&10\\4&9&14&19&24\end{pmatrix},\qquad
+ A_4=\begin{pmatrix}-1&-1&-1&-1&-3&-1\\1&1&1&1&-1&-3\\3&3&3&3&1&-1\\3&3&3&3&1&-1\\3&3&3&3&1&-1\\3&3&3&3&1&-1\end{pmatrix}.
+\]
+\par\Needspace{4\baselineskip}\textbf{Solution}\par
+\textbf{(a)} The leading $2\times2$ minor is $-2$. Using $a_k=a_1+(k-1)(a_2-a_1)$ gives\par
+\[
+ \boxed{A_1=\begin{pmatrix}2&5\\2&4\\4&9\end{pmatrix}
+ \begin{pmatrix}1&0&-1&-2&-3\\0&1&2&3&4\end{pmatrix}} .
+\]
+The first two columns of the right factor form $I_2$; both ranks are 2.\par
+\textbf{(d)} Columns $1,5,6$ have a leading $3\times3$ minor of $16$. The first four columns coincide, so\par
+\[
+ \boxed{A_4=
+ \begin{pmatrix}-1&-3&-1\\1&-1&-3\\3&1&-1\\3&1&-1\\3&1&-1\\3&1&-1\end{pmatrix}
+ \begin{pmatrix}1&1&1&1&0&0\\0&0&0&0&1&0\\0&0&0&0&0&1\end{pmatrix}} .
+\]
+Columns $1,5,6$ of the right factor form $I_3$; both ranks are 3.\par
+\end{document}

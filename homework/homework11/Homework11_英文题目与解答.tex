@@ -1,0 +1,118 @@
+\documentclass[UTF8,10pt,letterpaper,fontset=fandol]{ctexart}
+\usepackage[margin=0.9in]{geometry}
+\usepackage{amsmath,amssymb,enumitem,needspace}
+\usepackage[unicode,hidelinks]{hyperref}
+\pagestyle{plain}
+\raggedbottom
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1pt}
+\setlength{\emergencystretch}{2em}
+\linespread{1.06}
+\AtBeginDocument{\setlength{\abovedisplayskip}{5pt}\setlength{\belowdisplayskip}{5pt}\setlength{\abovedisplayshortskip}{3pt}\setlength{\belowdisplayshortskip}{3pt}}
+\setcounter{secnumdepth}{0}
+\setlist[enumerate]{label=(\arabic*),leftmargin=2em,itemsep=0.2em,topsep=0.2em}
+\ctexset{section={format=\Large\bfseries,beforeskip=1.1ex,afterskip=0.7ex}}
+\newcommand{\C}{\mathbb C}
+\newcommand{\R}{\mathbb R}
+\newcommand{\F}{\mathbb F}
+\newcommand{\ip}[2]{\langle #1,#2\rangle}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\im}{im}
+\begin{document}
+\begin{center}
+{\LARGE Homework 11}\\[0.5em]
+November 11, 2026\\[0.25em]
+Name: YuanHao Tang\quad Student ID: 3120265621
+\end{center}
+\section{Problem 1}
+Find the spectral decomposition of the matrix\par
+\[A=\begin{pmatrix}0&1&1&-1\\1&0&-1&1\\1&-1&0&1\\-1&1&1&0\end{pmatrix}.\]
+\par\Needspace{4\baselineskip}\textbf{Solution}\par
+With $v=(1,-1,-1,1)^T$, $A=I-vv^T$ and $v^Tv=4$, so\par
+\[Av=-3v,\qquad Aw=w\quad(w\perp v).\]
+The two orthogonal eigenspace projectors give\par
+\[P_{-3}=\tfrac14 vv^T,\qquad P_1=I-\tfrac14 vv^T,\qquad
+\boxed{A=-3P_{-3}+P_1}.\]
+
+\section{Problem 2}
+Let $A\in\C^{m\times n}$ have rank $r$ and positive singular values $\sigma_1\ge\cdots\ge\sigma_r>0$. Let $x_1,\ldots,x_n$ and $y_1,\ldots,y_m$ be the columns of the unitary matrices $U,V$ in its SVD. Show that\par
+\begin{align*}
+(1)\quad &Ax_j=\sigma_j y_j,\quad A^*y_j=\sigma_jx_j\quad(1\le j\le r);\\
+(2)\quad &Ax=\sum_{j=1}^r\sigma_j y_j\ip{x_j}{x},\qquad
+ A^*y=\sum_{j=1}^r\sigma_j x_j\ip{y_j}{y}
+ \quad(x\in\C^n,\ y\in\C^m).
+\end{align*}
+\par\Needspace{4\baselineskip}\textbf{Solution}\par
+From $A=VDU^*$, $AU=VD$ and $A^*V=UD^*$. Comparing the first $r$ columns gives (1); the remaining columns vanish.\par
+Expand in the two orthonormal bases:\par
+\[
+ Ax=\sum_{j=1}^n (Ax_j)(x_j^*x),\qquad
+ A^*y=\sum_{j=1}^m(A^*y_j)(y_j^*y).
+\]
+Only the first $r$ terms survive; (1) now gives (2).\par
+\newpage
+\section{Problem 3}
+Find a singular value decomposition of $A=\left(\begin{smallmatrix}3&4\\0&0\\0&0\end{smallmatrix}\right)$.\par
+\par\Needspace{4\baselineskip}\textbf{Solution}\par
+$AA^T=\operatorname{diag}(25,0,0)$ gives $\sigma_1=5$, $y_1=e_1$. Complete $x_1=A^Te_1/5=(3,4)^T/5$ with $x_2=(-4,3)^T/5\in\ker A$:\par
+\[
+ \boxed{A=VDU^T},\qquad V=I_3,\quad
+ D=\begin{pmatrix}5&0\\0&0\\0&0\end{pmatrix},\quad
+ U=\tfrac15\begin{pmatrix}3&-4\\4&3\end{pmatrix}.
+\]
+\section{Problem 4}
+Find a singular value decomposition of\par
+\[
+ A=\begin{pmatrix}2&1&-2&3\\0&4&1&1\\2&5&-2&4\end{pmatrix}.
+\]
+\par\Needspace{4\baselineskip}\textbf{Solution}\par
+Set $G=AA^T$:\par
+\[
+G=\begin{pmatrix}18&5&25\\5&18&22\\25&22&49\end{pmatrix},
+\qquad p(t)=\det(tI-G)=t^3-85t^2+954t-189 .
+\]
+The roots $t_1,t_2,t_3$ lie in $(71,72),(13,14),(0,1)$, respectively. Crossing the first two rows of $G-tI$ gives\par
+\[
+ w(t)=\begin{pmatrix}25t-340\\22t-271\\(18-t)^2-25\end{pmatrix},\qquad
+ y_j=\frac{w(t_j)}{\|w(t_j)\|},\quad
+ \sigma_j=\sqrt{t_j},\quad x_j=\frac{A^Ty_j}{\sigma_j}\quad(1\le j\le3).
+\]
+Since $(G-tI)w(t)=(0,0,-p(t))^T$, $Gy_j=t_jy_j$. Take $x_4=(-11,-2,0,8)^T/\sqrt{189}\in\ker A$.\par
+\[
+ V=[y_1\ y_2\ y_3],\quad U=[x_1\ x_2\ x_3\ x_4],\quad
+ D=[\,\operatorname{diag}(\sigma_1,\sigma_2,\sigma_3)\ \ 0\,],\qquad \boxed{A=VDU^T}.
+\]
+Check: $x_i^Tx_j=y_i^TGy_j/(\sigma_i\sigma_j)=\delta_{ij}$ for $i,j\le3$, and $AU=VD$.\par
+\newpage
+\section{Problem 5}
+Verify normality and find the spectral decomposition of\par
+\[
+ A=\begin{pmatrix}1&-1&0\\-1&2&-1\\0&-1&3\end{pmatrix}.
+\]
+\par\Needspace{4\baselineskip}\textbf{Solution}\par
+$A^*=A$ implies normality. For $H=A-2I$, $\det(tI-H)=t(t^2-3)$.\par
+Interpolation at $0,\pm\sqrt3$ gives the projectors of $H$:\par
+\[
+ P_0=I-\frac{H^2}{3},\qquad
+ P_+=\frac{H^2+\sqrt3 H}{6},\qquad P_-=\frac{H^2-\sqrt3 H}{6},
+ \qquad H^2=\begin{pmatrix}2&1&1\\1&2&-1\\1&-1&2\end{pmatrix}.
+\]
+Since $A=2I+H$,\par
+\[\boxed{A=(2-\sqrt3)P_-+2P_0+(2+\sqrt3)P_+}.\]
+\section{Problem 6}
+Verify that the following matrix is simple (diagonalizable), and find its spectral decomposition:\par
+\[
+ A=\begin{pmatrix}1&0&0&0\\-1&0&1&1\\0&0&-1&0\\1&1&1&0\end{pmatrix}.
+\]
+\par\Needspace{4\baselineskip}\textbf{Solution}\par
+$A^2=I$ and $A\ne\pm I$ give the square-free minimal polynomial $(t-1)(t+1)$. Thus $A$ is diagonalizable, with projectors\par
+\[
+ P_+=\tfrac12\begin{pmatrix}2&0&0&0\\-1&1&1&1\\0&0&0&0\\1&1&1&1\end{pmatrix},\qquad
+ P_-=\tfrac12\begin{pmatrix}0&0&0&0\\1&1&-1&-1\\0&0&2&0\\-1&-1&-1&1\end{pmatrix}.
+\]
+\[
+ P_\pm=(I\pm A)/2,\qquad P_\pm^2=P_\pm,\quad P_+P_-=0,\quad
+ P_++P_-=I,\qquad \boxed{A=P_+-P_-}.
+\]
+\end{document}
