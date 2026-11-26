@@ -328,7 +328,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\homework\homework08\build.
 | [正规矩阵、Schur 与 QR](notes/lecture10/02_正规矩阵与Schur及QR分解.md) | [第十九章](notes/中文精简版/19_正规矩阵与Schur及QR分解.md) |
 | [Hermitian 型与正定性](notes/lecture10/03_Hermitian型与正定性.md) | [第二十章](notes/中文精简版/20_Hermitian型与正定性.md) |
 
-新增 5 张图继续使用黑底、亮色、中英对照及 Computer Modern 数学字体；每图含具体计算与判据。另附 [8 道第九讲练习](notes/lecture09/03_练习与公式速查.md)和 [10 道第十讲练习](notes/lecture10/04_练习与公式速查.md)。中文精简版保留原练习文件编号 14、15，新增正文续用 16—20，原链接继续有效。
+新增 5 张图继续使用黑底、亮色、中英对照及 Computer Modern 数学字体；每图含具体计算与判据。另附 [8 道第九讲练习](notes/lecture09/03_练习与公式速查.md)和 [8 道第十讲练习](notes/lecture10/04_练习与公式速查.md)。中文精简版保留原练习文件编号 14、15，新增正文续用 16—20，原链接继续有效。
 
 ## Homework 9—12
 
